@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+	<script type="text/javascript">
+		function $(id){
+			return typeof id==='string'?document.getElementById(id):id;
+		}
+
+		window.onload=function(){
+			//获取鼠标划过或点击的标签和要切换内容的元素
+			var lis = $('notice-tit').getElementsByTagName('li');
+			var divs = $('notice-con').getElementsByTagName('div');
+			var index = 0;
+			var timer = null;
+			var timers = null;
+
+
+			timers = window.setInterval(autoPlay,2000);
+
+			function autoPlay(){
+				index++;
+				if (index >= lis.length) {
+					index=0;
+				};
+				changeOption(index);
+			};
+
+			function changeOption(curIndex){
+				for(var j=0;j<lis.length;j++){
+					lis[j].className='';
+					divs[j].style.display='none';
+				}
+				lis[curIndex].className='select';
+				divs[curIndex].style.display = 'block';
+				console.log(curIndex);
+				index = curIndex;
+			};
+
+			//遍历lis下所有li
+			for(var i=0; i<lis.length; i++){
+				lis[i].id = i;
+				lis[i].onmouseover=function(){
+					//用that引用当前划过的li
+					var that = this;
+
+					if(timer){
+						clearTimeout(timer);
+						timer = null;
+					}
+					if(timers){
+						clearInterval(timers);
+						timers = null;
+					}
+					timer = window.setTimeout(function(){
+						changeOption(that.id);
+					},300);
+				};
+				lis[i].onmouseout=function(){
+					timers = window.setInterval(autoPlay,2000);
+				};
+			}
+
+		}
+	</script>
+</head>
+<body>
+
+<div class="notice" id="notice">
+	<div id="notice-tit" class="notice-tit">
+		<ul>
+			<li class="select">
+				<a href="#">公告</a>
+			</li>
+			<li>
+				<a href="#">规则</a>
+			</li>
+			<li>
+				<a href="#">论坛</a>
+			</li>
+			<li>
+				<a href="#">安全</a>
+			</li>
+			<li>
+				<a href="#">公益</a>
+			</li>
+		</ul>
+	</div>
+	<div id="notice-con" class="notice-con">
+		<div class="mod" style="display:block;">
+			<ul>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mod" style="display:none;">
+			<ul>
+				<li>
+					<a href="#">[XX]XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mod" style="display:none;">
+			<ul>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">[XX]XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mod" style="display:none;">
+			<ul>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">[XX]XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mod" style="display:none;">
+			<ul>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">XXXXXXX</a>
+				</li>
+				<li>
+					<a href="#">[XX]XXXXXXX</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

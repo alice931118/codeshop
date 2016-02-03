@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>demo</title>
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+	
+</head>
+<body>
+
+<div class="paper-flip" id="paper-flip">
+	  <div class="share-layer">
+		    <div class="btn-wrap">
+			      <a class="btn btn-facebook">FaceBook</a>
+			      <a class="btn btn-twitter">Twitter</a>
+			      <a class="btn btn-google">Google +</a>
+		    </div>
+		    <span class="btn-close">×</span>
+	  </div>
+
+	  <div class="image-layer" id="image-layer">
+	    	<img src="http://p6.qhimg.com/d/inn/3f563406/table.jpg" alt="">
+	  </div>
+</div>
+<script type="text/javascript">
+		document.getElementById('paper-flip').addEventListener("click",function(e){
+		  if(e.target.className=="btn-close"){
+		    this.className = "paper-flip";
+		  } else {
+		    this.className = "paper-flip folded";
+		  }
+		});
+	</script>
+</body>
+</html>
