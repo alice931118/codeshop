@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>表单验证</title>
+
+    <style type="text/css">
+    *{
+    	margin: 0;
+    	padding: 0;
+    }
+    body{
+    	
+    }
+
+    .clearfix {
+	    zoom:           1;
+	}
+	.clearfix:after {
+	    clear:          both;
+	    content:        '';
+	    display:        block;
+	}
+
+	form{
+		width: 520px;
+		height: 300px;
+		margin: 100px auto;
+		padding: 50px 0 0 20px;
+		border:1px solid #333;
+		border-radius: 10px;
+	}
+
+    div{
+    	margin-bottom: 5px;
+    }
+    label{
+    	float: left;
+    }
+    .msg{
+    	display: none;
+    	float: left;
+    	color: #666;
+    	padding-left: 10px;
+    }
+    .countBlock{
+    	padding-left: 85px;
+    	font-size: 12px;
+    	color: #666;
+    }
+    #count{
+    	visibility: hidden;
+    }
+    .strongth{
+    	padding-left: 85px;
+    }
+    .strongth em{
+    	display: block;
+    	float: left;
+    	width: 45px;
+    	height: 20px;
+    	background: #FFDEAD;
+    	margin: 0 3px 0 0;
+    	text-align: center;
+    	color: #ffffff;
+    }
+    .strongth em.active{
+    	background: #FFB90F;
+    }
+    #submit{
+    	width: 100px;
+    	height: 40px;
+    	margin: 20px 0 0 20px;
+    	background: #FFA54F;
+    	color: #fff;
+    }
+
+
+    </style>
+</head>
+<body>
+
+<form>
+	<div class="clearfix">
+		<label>
+			<span>　会员名：</span>
+			<input type="text" class="text">
+		</label>
+		<p class="msg">请输入5-25个字符</p>
+	</div>
+	
+	<div class="clearfix countBlock">
+		<label>
+			<span></span>
+			<b id="count">0个字符</b>
+		</label>
+	</div>
+
+	<div class="clearfix">
+		<label>
+			<span>　密　码：</span>
+			<input type="password" class="text">
+		</label>
+		<p class="msg">请输入6-16个字符,字母与数字的组合</p>
+	</div>
+	<div class="strongth clearfix">
+		<em>弱</em>
+		<em>中</em>
+		<em>强</em>
+	</div>
+
+	<div class="clearfix">
+		<label>
+			<span>确认密码：</span>
+			<input type="password" class="text" disabled="disabled">
+		</label>
+		<p class="msg">请再输入一次</p>
+	</div>
+
+	<input type="button" id="submit" value="注册">
+</form>
+
+
+<script type="text/javascript">
+	
+
+	window.onload = function(){
+		var aInput = document.getElementsByTagName("input");
+		var oName = aInput[0],
+			pwd = aInput[1],
+			pwd2 = aInput[2];
+
+		var aP = document.getElementsByTagName("p");
+		var name_msg = aP[0],
+			pwd_msg = aP[1],
+			pwd2_msg = aP[2];
+
+		var count = document.getElementById("count");
+		var aEm = document.getElementsByTagName("em");
+
+		var name_length = 0;
+
+
+		function getLength(str){
+			return str.replace(/[^\x00-xff]/g,"xx").length;
+		}
+
+		//用户名验证
+		oName.onfocus = function(){
+			name_msg.style.display="block";
+		}
+		oName.onkeyup = function(){
+			count.style.visibility = "visible";
+			name_length = getLength(this.value);
+			count.innerHTML = name_length + "个字符";
+			if (name_length==0) {
+				count.style.visibility="hidden";
+			};
+		}
+		oName.onblur = function(){
+			//含有非法字符
+			var re = /[^\w\u4e00-\u9fa5]/g;
+			if (re.test(this.value)) {
+				name_msg.innerHTML = "含有非法字符";
+			}
+			//不能为空
+			else if (this.value == "") {
+				name_msg.innerHTML = "不能为空！";
+			}
+			//长度超过
+			else if (name_length > 25) {
+				name_msg.innerHTML = "长度超过25个字符";
+			}
+			//长度少于
+			else if (name_length < 5) {
+				name_msg.innerHTML = "长度少于5个字符";
+			}
+			//OK
+			else{
+				name_msg.innerHTML = "OK";
+			}
+		}
+
+		//密码验证
+		pwd.onfocus = function(){
+			pwd_msg.style.display = "block";
+		}
+		pwd.onkeyup = function(){
+
+			//大于1个字符为弱
+			if (this.value.length > 0) {
+				aEm[0].className = "active";
+				pwd2.value = "";
+			}else{
+				aEm[0].className = "";
+			}
+
+			//大于6个字符为中
+			if (this.value.length >= 6) {
+				aEm[1].className = "active";
+				pwd2.removeAttribute("disabled");
+				pwd2_msg.style.display = "block";
+			}
+			else{
+				aEm[1].className = "";
+				aEm[2].className = "";
+				pwd2.setAttribute("disabled","true");
+				pwd2_msg.style.display = "none";
+			};
+
+			//大于10个字符为强
+			if (this.value.length > 10) {
+				aEm[2].className = "active";
+			}
+			else{
+				aEm[2].className = "";
+			}
+		}
+		pwd.onblur = function(){
+
+			function findStr(str,n){
+			 	var tmp = 0;
+			 	for(var i=0; i<str.length;i++){
+			 		if (str.charAt(i)==n) {
+			 			tmp++;
+			 		};
+			 	}
+			 	return tmp;
+			 }
+			 var m = findStr(pwd.value, pwd.value[0]);
+			 var re_n = /[^\d]/g;
+			 var re_t = /[^a-zA-Z]/g;
+
+
+			 //不能为空
+			if (this.value == "") {
+				pwd_msg.innerHTML = "密码不能为空";
+			}
+			 //不能用相同字符
+			else if (m==this.value.length) {
+			 	pwd_msg.innerHTML = "不能用相同字符";
+			}
+
+			 //长度在6-16之间
+			else if (this.value.length<6 || this.value.length>16) {
+				pwd_msg.innerHTML = "密码长度应为6-16个字符";
+			}
+			 //不能全是数字
+			 else if (!re_n.test(this.value)) {
+			 	pwd_msg.innerHTML = "不能全是数字";
+			 }
+			 //不能全是字母
+			 else if (!re_t.test(this.value)) {
+			 	pwd_msg.innerHTML = "不能全是字母";
+			 }
+			 //OK                                                         
+			 else{
+			 	pwd_msg.innerHTML = "OK";
+			 } 
+
+
+			 //确认密码
+			 pwd2.onblur = function(){
+			 	if (this.value != pwd.value) {
+			 		pwd2_msg.innerHTML = "两次输入的密码不一致！";
+			 	}else{
+			 		pwd2_msg.innerHTML = "OK";
+			 	}
+			 }                 
+		}
+	}
+
+
+
+</script>
+</body>
+</html>
