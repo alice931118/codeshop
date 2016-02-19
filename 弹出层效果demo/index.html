@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript">
+	window.onload = function(){
+		var container = document.getElementById('container');
+		var list = document.getElementById('list');
+		var prev = document.getElementById('prev');
+		var next = document.getElementById('next');
+		var index = 1;
+		var animated = false;
+		var timer;
+
+		function animate(offset){
+			var newLeft = parseInt(list.style.left) + offset;
+
+			function go(){
+
+					list.style.left = newLeft + 'px';
+					if (newLeft > -600) {
+						list.style.left = -3000 + 'px'
+					};
+					if (newLeft < -3000) {
+						list.style.left = -600 + 'px'
+					};
+			}
+			go();
+		}
+
+		next.onclick = function(){
+			if (index == 5) {
+				index = 1;
+			}
+			else{
+				index += 1;
+			};
+
+			if (!animated){
+				animate(-600);
+			};
+			
+		}
+		prev.onclick = function (){
+			if (index == 1) {
+				index = 5;
+			}else{
+				index -= 1;
+			};
+
+			if (!animated){
+				animate(600);
+			};
+		}
+	}
+
+	</script>
+</head>
+<body>
+<button id="btn">点击</button>
+<div style="height:1000px;">内容balabala</div>
+<div id="fancybox" style="display:block;">
+	<div class="left">
+		<div id="container">
+			<div id="list" style="left:-600px;">
+				<img src="img/5.png">
+				<img src="img/1.png">
+				<img src="img/2.png">
+				<img src="img/3.png">
+				<img src="img/4.png">
+				<img src="img/5.png">
+				<img src="img/1.png">
+			</div>
+			<a href="javascript:;" class="arrow" id="prev"><img src="img/nav_left.png"></a>
+			<a href="javascript:;" class="arrow" id="next"><img src="img/nav_right.png"></a>
+		</div>
+	</div>
+	<div class="right"></div>
+</div>
+
+
+</body>
+</html>

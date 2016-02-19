@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript">
+	window.onload = function(){
+		a();
+		
+	}
+
+	function show(){
+		var sWidth = document.body.scrollWidth,
+			sHeight = document.body.scrollHeight,
+			cHeight=document.documentElement.clientHeight;
+
+		//添加底色层
+		var wrapper = document.createElement("div");
+			wrapper.id = "wrapper";
+			wrapper.style.width = sWidth + "px";
+			wrapper.style.height = sHeight + "px";
+			document.body.appendChild(wrapper);
+
+		//添加弹出层
+		var inner = document.createElement("div");
+			inner.id = "inner";
+		var fancybox = document.getElementById("fancybox");
+			inner.innerHTML="<div class='box'><div id='close'>点击关闭</div>" + "<div class='left'><div id='container'><div id='list' style='left:-600px;'><img src='img/5.png'><img src='img/1.png'><img src='img/2.png'><img src='img/3.png'><img src='img/4.png'><img src='img/5.png'><img src='img/1.png'></div><a class='arrow' id='prev'><img src='img/nav_left.png'></a><a class='arrow' id='next'><img src='img/nav_right.png'></a></div></div><div class='right'></div>" + "</div>";
+			document.body.appendChild(inner);
+		var oWidth = inner.offsetWidth,
+			oHeight = inner.offsetHeight;
+			inner.style.left = sWidth/2 - oWidth/2 +"px";
+			inner.style.top = cHeight/2 - oHeight/2 +"px";
+
+		var list = document.getElementById('list');
+		var prev = document.getElementById('prev');
+		var next = document.getElementById('next');
+		var index = 1;
+		var animated = false;
+		var timer;
+
+		function animate(offset){
+			var newLeft = parseInt(list.style.left) + offset;
+
+			function go(){
+
+					list.style.left = newLeft + 'px';
+					if (newLeft > -600) {
+						list.style.left = -3000 + 'px'
+					};
+					if (newLeft < -3000) {
+						list.style.left = -600 + 'px'
+					};
+			}
+			go();
+		}
+
+		next.onclick = function(){
+			if (index == 5) {
+				index = 1;
+			}
+			else{
+				index += 1;
+			};
+
+			if (!animated){
+				animate(-600);
+			};
+			
+		}
+		prev.onclick = function (){
+			if (index == 1) {
+				index = 5;
+			}else{
+				index -= 1;
+			};
+
+			if (!animated){
+				animate(600);
+			};
+		}
+
+			
+		//点击按钮或底色关闭弹出层
+		var closeBtn = document.getElementById("close");
+			closeBtn.onclick = wrapper.onclick = function(){
+				document.body.removeChild(wrapper);
+				document.body.removeChild(inner);
+			}
+		}
+
+	function a(){
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			show();
+		}
+	}	
+	</script>
+</head>
+<body>
+<button id="btn">点击</button>
+<div style="height:1000px;">内容balabala</div>
+</body>
+</html>
