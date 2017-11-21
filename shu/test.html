@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>最简单</title>
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<style type="text/css">
+	/*树形列表样式*/
+		.xtree {
+		    margin: 0;
+		    padding: 5px;
+		    color: #333;
+		    /*font-size: 0;*/
+		}
+		.xtree li {
+		    padding: 0;
+		    margin: 0;
+		    list-style: none;
+		    line-height: 14px;
+		    text-align: left;
+		    white-space: nowrap;
+		    outline: 0;
+		}
+		.xtree-icon{
+			display: inline-block;	
+			vertical-align: middle;
+			cursor: pointer;
+			background-repeat: no-repeat;
+			background-image: url("./img/xTree.png");
+			width: 18px;
+			height: 18px;
+			margin: 0;
+			vertical-align:middle;
+		}
+		.xtree-icon-mid{
+			display: inline-block;	
+			vertical-align: middle;
+			cursor: pointer;
+			background-repeat: no-repeat;
+			background-image: url("./img/xTree.png");
+			width: 13px;
+			height: 13px;
+			margin: 0 0 0 -3px;
+		}
+		.xtree-icon-larg{
+			display: inline-block;	
+			vertical-align: middle;
+			cursor: pointer;
+			background-repeat: no-repeat;
+			background-image: url("./img/xTree.png");
+			width: 16px;
+			height: 16px;
+		}
+		.center-close{
+			background-position: -74px -18px;
+		}
+		.roots-close{
+			background-position: -74px 0px;
+		}
+		.bottom-close{
+			background-position: -74px -36px;
+		}
+		.center-open{
+			background-position: -92px -18px;
+		}
+		.roots-open{
+			background-position: -92px 0px;
+		}
+		.bottom-open{
+			background-position: -92px -36px;
+		}
+		.checkbox-false-full{
+		    background-position: 0 0;		
+		}
+		.checkbox-true-full{
+			background-position: -14px 0;
+		}
+		.checkbox-true-part{
+			background-position: -14px -42px;
+		}
+		.file-open{
+			margin-right: 2px;
+		    vertical-align: top;
+		    background-position: -110px -16px;
+		}
+		.file-close{
+			margin-right: 2px;
+		    vertical-align: top;
+			background-position: -110px 0;
+		}
+		.icon-docu{
+			margin-right: 2px;
+    		background-position: -110px -32px;
+		}
+		.center-docu{
+		    background-position: -56px -18px;
+		}
+		.bottom-docu{
+			background-position: -56px -36px;
+		}
+		.xtree-line{
+			background: url(./img/line_conn.gif) 0 0 repeat-y;
+		}
+		.xtree-line li{
+			margin-left: -14px;
+		}
+		/*本页样式*/
+		.xtree-wrap{
+			width: 200px;
+			margin: 0 auto;
+		}
+
+	</style>
+</head>
+<body>
+<div>
+	<div class="xtree-icon roots-close"></div>
+	<div class="xtree-icon center-close"></div>
+	<div class="xtree-icon bottom-close"></div>
+	<div class="xtree-icon roots-open"></div>
+	<div class="xtree-icon center-open"></div>
+	<div class="xtree-icon bottom-open"></div>
+	<span class="xtree-icon center-docu"></span>
+	<span class="xtree-icon bottom-docu"></span>
+
+	<div class=" xtree-icon-mid checkbox-false-full"></div>
+	<div class="xtree-icon-mid checkbox-true-full"></div>
+	<div class="xtree-icon-mid checkbox-true-part"></div>
+
+	<div class="xtree-icon-larg file-open"></div>
+	<div class="xtree-icon-larg file-close"></div>
+	<div class="xtree-icon-larg icon-docu"></div>
+	<div style="width:50px;height: 50px;border: 1px solid #ddd;background: url(./img/line-conn.gif) 0 0 repeat-y;"></div>
+</div>
+	
+	<div class="xtree-wrap">
+		<div >
+			<ul class="xtree">
+				<li>
+					<div class="xtree-icon roots-open"></div>
+					<div class=" xtree-icon-mid checkbox-false-full"></div>
+					<div class="xtree-icon-larg file-open"></div>
+					<span>祖先节点1</span>
+					<ul class="xtree-line">
+						<li>
+							<div class="xtree-icon roots-open"></div>
+							<div class=" xtree-icon-mid checkbox-false-full"></div>
+							<div class="xtree-icon-larg file-open"></div>
+							<span>父节点1</span>
+							<ul class="xtree-line">
+								<li>
+									<span class="xtree-icon center-docu"></span>
+									<div class=" xtree-icon-mid checkbox-false-full"></div>
+									<div class="xtree-icon-larg icon-docu"></div>
+									<span>子节点1</span>
+								</li>
+								<li>
+									<span class="xtree-icon center-docu"></span>
+									<div class=" xtree-icon-mid checkbox-false-full"></div>
+									<div class="xtree-icon-larg icon-docu"></div>
+									<span>子节点2</span>
+								</li>
+								<li>
+									<span class="xtree-icon bottom-docu"></span>
+									<div class=" xtree-icon-mid checkbox-false-full"></div>
+									<div class="xtree-icon-larg icon-docu"></div>
+									<span>子节点3</span>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="xtree-icon center-open"></div>
+							<div class=" xtree-icon-mid checkbox-false-full"></div>
+							<div class="xtree-icon-larg file-open"></div>
+							<span>父节点2</span>
+							<ul class="xtree-line">
+								<li>
+									<span class="xtree-icon center-docu"></span>
+									<div class=" xtree-icon-mid checkbox-false-full"></div>
+									<div class="xtree-icon-larg icon-docu"></div>
+									<span>子节点1</span>
+								</li>
+								<li>
+									<span class="xtree-icon center-docu"></span>
+									<div class=" xtree-icon-mid checkbox-false-full"></div>
+									<div class="xtree-icon-larg icon-docu"></div>
+									<span>子节点2</span>
+								</li>
+								<li>
+									<span class="xtree-icon bottom-docu"></span>
+									<div class=" xtree-icon-mid checkbox-false-full"></div>
+									<div class="xtree-icon-larg icon-docu"></div>
+									<span>子节点3</span>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="xtree-icon bottom-open"></div>
+							<div class=" xtree-icon-mid checkbox-false-full"></div>
+							<div class="xtree-icon-larg file-open"></div>
+							<span>父节点3</span>
+							<ul class="">
+								<li>
+									<span class="xtree-icon center-docu"></span>
+									<div class=" xtree-icon-mid checkbox-false-full"></div>
+									<div class="xtree-icon-larg icon-docu"></div>
+									<span>子节点1</span>
+								</li>
+								<li>
+									<span class="xtree-icon center-docu"></span>
+									<div class=" xtree-icon-mid checkbox-false-full"></div>
+									<div class="xtree-icon-larg icon-docu"></div>
+									<span>子节点2</span>
+								</li>
+								<li>
+									<span class="xtree-icon bottom-docu"></span>
+									<div class=" xtree-icon-mid checkbox-false-full"></div>
+									<div class="xtree-icon-larg icon-docu"></div>
+									<span>子节点3</span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<ul></ul>
+					<ul></ul>
+				</li>
+				<li>
+					<div class="xtree-icon bottom-open"></div>
+					<div class=" xtree-icon-mid checkbox-false-full"></div>
+					<div class="xtree-icon-larg file-open"></div>
+					<span>祖先节点1</span>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+	// 展开收起
+		$('div.xtree-icon').click(function(){
+			if ($(this).hasClass('roots-open') || $(this).hasClass('roots-close')){
+				if($(this).nextAll('ul').css('display') == 'none'){
+					$(this).nextAll('ul').slideDown(250);
+					$(this).addClass('roots-open');
+					$(this).removeClass('roots-close');
+				}else{
+					$(this).nextAll('ul').slideUp(250);
+					$(this).removeClass('roots-open');
+					$(this).addClass('roots-close');
+				}
+			}
+			else if($(this).hasClass('center-open') || $(this).hasClass('center-close')){
+				if($(this).nextAll('ul').css('display') == 'none'){
+					$(this).nextAll('ul').slideDown(250);
+					$(this).addClass('center-open');
+					$(this).removeClass('center-close');
+				}else{
+					$(this).nextAll('ul').slideUp(250);
+					$(this).removeClass('center-open');
+					$(this).addClass('center-close');
+				}
+			}
+			else if($(this).hasClass('bottom-open') || $(this).hasClass('bottom-close')){
+				if($(this).nextAll('ul').css('display') == 'none'){
+					$(this).nextAll('ul').slideDown(250);
+					$(this).addClass('bottom-open');
+					$(this).removeClass('bottom-close');
+				}else{
+					$(this).nextAll('ul').slideUp(250);
+					$(this).removeClass('bottom-open');
+					$(this).addClass('bottom-close');
+				}
+			};
+
+		});
+		
+		// 选中
+		function xuanzhong(argument) {
+
+			$('.checkbox-false-full').unbind().click(function(argument) {
+				// debugger;
+				$(this).parents('li').children('.checkbox-false-full').removeClass('checkbox-false-full').addClass('checkbox-true-part');
+				$(this).parent().find('.checkbox-false-full').removeClass('checkbox-false-full').addClass('checkbox-true-full');
+				$(this).removeClass('checkbox-true-part').addClass('checkbox-true-full');
+				// var flag;
+				modifyAuto($(this));
+				var totalarr = $('.checkbox-true-full');
+				for (var i = 0; i < totalarr.length; i++) {
+					modifyAuto($(totalarr[i]));
+				}
+				// 调用取消，防止出现事件监听失效
+				quxiao();
+			});
+		}
+		// 自动判断，如果统计都选中，则父级也选中
+		function modifyAuto(jqObj) {
+			var count = 0;
+			var checkarr = jqObj.parent().siblings().children('.xtree-icon-mid');
+			for (var i = 0; i < checkarr.length; i++) {
+				if ($(checkarr[i]).hasClass('checkbox-true-full')) {
+					count += 1;
+				}
+			}
+			if (count == checkarr.length) {
+				jqObj.parent().parent().parent().children('.checkbox-true-part').removeClass('checkbox-true-part').addClass('checkbox-true-full');
+			}
+		}
+		// 与上一步相反
+		function modifyAuto2(jqObj) {
+			var count = 0;
+			var checkarr = jqObj.parent().siblings().children('.xtree-icon-mid');
+			for (var i = 0; i < checkarr.length; i++) {
+				if ($(checkarr[i]).hasClass('checkbox-false-full')) {
+					count += 1;
+				}
+			}
+			if (count == checkarr.length) {
+				jqObj.parent().parent().parent().children('.checkbox-true-part').removeClass('checkbox-true-part').addClass('checkbox-false-full');
+			}
+		}
+		// 取消
+		function quxiao(argument) {
+			$('.checkbox-true-full,.checkbox-true-part').unbind().click(function(argument) {
+				$(this).parents('li').children('.checkbox-true-full').removeClass('checkbox-true-full').addClass('checkbox-true-part');
+				$(this).parent().find('.checkbox-true-full').removeClass('checkbox-true-full').addClass('checkbox-false-full');
+				$(this).removeClass('checkbox-true-full').removeClass('checkbox-true-part').addClass('checkbox-false-full');
+				modifyAuto2($(this));
+				var totalarr2 = $('.checkbox-false-full');
+				for (var i = 0; i < totalarr2.length; i++) {
+					modifyAuto2($(totalarr2[i]));
+				}
+				// 调用选中
+				xuanzhong();
+			});
+
+		};
+		xuanzhong();
+	</script>
+
+</body>
+</html>

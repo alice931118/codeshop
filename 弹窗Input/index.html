@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹窗</title>
+
+	<link rel="stylesheet" href="Styles/myIcon.css">
+	<script src="Components/ace/js/jquery.js"></script>
+	<script src="Scripts/pop.js"></script>
+
+	<style>
+		.DialogWrap{
+		    display: none;
+		}
+		.DialogBg{
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background-color: #000;
+		    filter: alpha(opacity=60);
+		    -moz-opacity: 0.6;
+		    opacity: 0.6;
+		}
+		.DialogContent{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -300px;
+			margin-left: -250px;
+			background-color: #fff;
+			border: 6px solid #666;
+	    	border-color: rgba(0,0,0,.75);
+	    	border-radius: 3px;
+	    	box-shadow: 0 5px 15px rgba(0,0,0,.5);
+		}
+		.DialogHeader{
+			position: relative;
+			background-color: #F4F5F9;
+			padding-left: 30px;
+		    border: 1px solid #dddddd;
+		    height: 50px;
+		    line-height: 50px;
+		}
+		.DialogHeader .dele-posit{
+			position: absolute;
+			right: 25px;
+			top: 16px;
+			display: inline-block;
+			vertical-align: middle;
+			cursor: pointer;
+		}
+		.DialogSection{
+			padding: 25px;
+		}
+
+		#linkArea select{
+			border:1px solid #c9c9c9;
+			background-color: #fff;
+			color: #666;
+			height: 28px;
+			line-height: 28px;
+			padding: 4px 6px;
+			font-size:14px;
+			border-radius: 4px;
+			cursor: pointer;
+			outline: none;
+		}
+
+		/*错误提示*/
+		input{
+			height: 20px;
+			line-height: 20px;
+			padding: 4px 6px;
+			font-size:14px;
+		}
+		.DialogKuang{
+			position: absolute;
+	    	z-index: 9999;
+		}
+		.input_warn{
+			color: #333;
+		    background: url(Images/img.png) no-repeat 2px -2363px;
+		    height: 28px;
+		    padding-left: 10px;
+		    min-width: 120px;
+		}
+		.input_warn .info
+	    {
+	      /*  display: none;*/
+	        display: inline-block;
+	        border: 1px solid #ffdf47;
+	        border-left: none;
+	        height: 26px;
+	        line-height: 26px;
+	        padding: 0 10px;
+	        color: #ff6600;
+	        font-size: 12px;
+	        background: #ffffe8;
+	    }
+
+		/*弹窗*/
+	    * { 
+		    padding: 0; 
+			margin: 0; 
+		}
+		#btnShow{ 
+		    margin: 30px 0 20px 20px; 
+			width: 90px; 
+			height: 30px;
+			line-height: 30px;
+			display: block; 
+		}
+		#divTop{ 
+		    display: none; 
+			position: absolute; 
+			left: 50%; 
+			top: 50%;
+			margin-top: -105px; 
+			margin-left: -200px; 
+			width: 400px; 
+			height: 200px; 
+			border: 2px solid #666; 
+			color: #333; 
+			background: #efefef; 
+			padding-top: 10px; 
+			text-align: center; 
+			font: 16px/30px "微软雅黑"; 
+		}
+	</style>
+
+
+</head>
+<body>
+	<button id="myBtn">点击弹框</button>
+	<button id="myBox_01">点击消息提示框(两个按钮)</button>
+	<button id="myBox_02">点击消息提示框（一个按钮）</button>
+	<br/>
+	<input type="button" id="btnShow" value="弹出框按钮" />
+	<div id="divTop">
+	 点击空白区域弹出层关闭！
+	</div>
+
+	<div style="margin-top:20px;">
+		<!-- 请输入数字：<input class="inputNumCheck" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"> -->
+		请输入数字：<input class="inputNumCheck" type="text" >
+	</div>
+	<div style="margin-top:20px;">
+		请输入价格：<input class="jiage" type="text">
+	</div>
+	<div style="margin-top:20px;">
+		请输入英文字符（最多20个）：<input class="inputEnglishCheck" type="text">
+	</div>
+	<div id="linkArea" style="margin-top:30px;">
+		<p>城市三级联动下拉：</p>
+		<select name="" id="province">
+			<option value="">请选择省份</option>
+		</select>
+		<select name="" id="city">
+			<option value="">请选择城市</option>
+		</select>
+		<select name="" id="area">
+			<option value="">请选择区域</option>
+		</select>
+	</div>
+	<div class="inputCheck" style="margin-top:30px;">
+		输入框验证：<input id="myInput" class="myInput" type="text">
+		<button class="submitBtn">提交</button>
+	</div>
+	<!-- <div class="DialogKuang">
+		<div class="input_warn">
+			<span class="info">请输入内容</span>
+		</div>
+	</div> -->
+	<div class="radioList" style="margin-top:30px;">
+		<input id="radio1" type="radio" name="radioList" value="按钮1">&nbsp;<label for="radio1">按钮1</label><br>
+		<input id="radio2" type="radio" name="radioList" value="按钮2">&nbsp;<label for="radio2">按钮2</label><br>
+		<input id="radio3" type="radio" name="radioList" value="按钮3">&nbsp;<label for="radio3">按钮3</label>
+		<button id="getRadio" >获取选中的radio</button>
+	</div>
+	<div class="checkboxList" style="margin-top:30px;">
+		<input id="checkbox1" type="checkbox" value="按钮1">&nbsp;<label for="checkbox1">按钮1</label><br>
+		<input id="checkbox2" type="checkbox" value="按钮2">&nbsp;<label for="checkbox2">按钮2</label><br>
+		<input id="checkbox3" type="checkbox" value="按钮3">&nbsp;<label for="checkbox3">按钮3</label><br>
+		<input id="checkbox4" type="checkbox" value="按钮4">&nbsp;<label for="checkbox4">按钮4</label><br>
+		<input id="checkbox5" type="checkbox" value="按钮5">&nbsp;<label for="checkbox5">按钮5</label>
+		<button id="allSelect">全选</button>&nbsp;<button id="allNoSelect">全不选</button>&nbsp;<button id="noSelect">反选</button>
+	</div>
+</body>
+
+<script>
+	$("#myBtn").click(function(){
+		var myOption = {
+			Id: 'myFirst',
+			Head_html: '开通账户',
+			Section_html: '我是一个弹窗'
+		}
+		showDialog(myOption);
+	});
+
+
+	var btnOption = {
+		// title: '提示',  
+		msg:'确定要删除该酒店吗？',
+		btnLeft: '取消编辑',
+		btnRight: '继续编辑',
+		btnLeftHref:'http://www.baidu.com',
+		btnRightHref:'http://www.t.ly.com/ghotel/',
+		callBack:function(){
+
+		}
+	}
+	var btnOption_02 = {
+		// title: '提示',
+		msg:'确定要删除该酒店吗？',
+		btnRight: '继续编辑',
+		// btnRightHref:'http://www.t.ly.com/ghotel/',
+	}
+
+	$("#myBox_01").click(function(){
+		$.MsgBox.Confirm(btnOption);
+	})
+	$("#myBox_02").click(function(){
+		$.MsgBox.Alert(btnOption_02);
+	})
+</script>
+
+<script>
+	//检测只能输入整数
+	$(".inputNumCheck").keyup(function(){
+		var checkValue = $(this).val();
+		if(checkValue!=""){
+			$(this).val(checkValue.replace(/\D|^0/g, ""));  //\D匹配一个非数字字符,等价于[^0-9]
+		}
+	})
+
+	//检测只能输入英文
+	$(".inputEnglishCheck").keyup(function() {
+		var checkValue = $(this).val();
+		if(checkValue!=""){
+			$(this).val(checkValue.replace(/[^a-z|A-Z]+/, ""));
+			if(checkValue.length>20){
+				$(this).val(checkValue.substring(0,20));
+			}
+		}
+	});
+
+	//实时的价格检测
+	function checkIsFloat(input) {
+	    // var re = /^[0-9]+\.{0,1}[0-9]{0,}$/; //判断字符串是否为数字 //判断小数 /^[0-9]+.?[0-9]*$/
+	    var re = /^[0-9]+\.{0,1}[0-9]{0,4}$/;
+	    var nubmer = input;
+	    if (!re.test(nubmer)) {
+	        return false;
+	    }
+	    else {
+	        return true;
+	    }
+	}
+	$(".jiage").keyup(function () {
+	    var Jiage = $(this).val();
+	    if (Jiage != "") {
+	        if (!checkIsFloat(Jiage)) {
+	            // $(this).val(Jiage.replace(/\D/g, ""));
+	            $(this).val(Jiage.substring(0,parseInt(Jiage.length-1)))
+	            return false;
+	        }
+	    }
+	    else {
+	        Jiage = 0;
+	    }
+	})
+
+	//单选按钮再次点击取消选中
+	var radioList = $(".radioList input[name='radioList']");
+	var radioListLen = radioList.length;
+
+	for(var i=0;i < radioListLen;i++){
+		radioList.eq(i).click(function(){
+			$(this).siblings("input[name='radioList']").removeAttr("checked");
+
+			if($(this).attr("checked")){
+				$(this).removeAttr("checked");
+			}else{
+				$(this).attr("checked","checked");
+			}
+		})
+	}
+
+	//获取单选框选中的值
+	$("#getRadio").on("click",function(){
+		var noSelect = true;
+		for(var i = 0; i < radioListLen; i++){
+			if(radioList.eq(i).is(":checked")){
+				console.log(radioList.eq(i).val());
+				alert("您选择的是"+radioList.eq(i).val());
+				noSelect = false;
+			}
+			// if(radioList.eq(i).attr("checked")){
+			// 	console.log(radioList.eq(i).val());
+			// 	alert("您选择的是"+radioList.eq(i).val());
+			// 	noSelect = false;
+			// }
+		}
+		if(noSelect){
+			alert("您没有任何选择");
+		}
+	});
+
+	//全选
+	var checkBoxList = $(".checkboxList input[type='checkbox']");
+	var checkBoxLen  = checkBoxList.length;
+	console.log(checkBoxLen);
+
+	$("#allSelect").on("click",function(){
+		for(var i = 0; i < checkBoxLen; i++){
+			checkBoxList.eq(i).prop("checked",true);
+		}
+	});
+
+	$("#allNoSelect").on("click",function(){
+		for(var i = 0; i < checkBoxLen; i++){
+			checkBoxList.eq(i).prop("checked",false);
+		}
+	});
+	$("#noSelect").on("click",function(){
+		for(var i = 0; i < checkBoxLen; i++){
+			checkBoxList.eq(i).prop("checked",!checkBoxList.eq(i).prop("checked"));
+		}
+		// checkBoxList.each(function () {   
+	 //        $(this).prop("checked", !$(this).prop("checked"));   
+	 //    }); 
+
+	})
+
+</script>
+<script>
+	$(function(){
+		var province = [
+			{"name" : "广东省" ,
+				"city" : [
+					{
+						"name" : "广州市" ,
+						"area" : ["越秀区","荔湾区","海珠区","天河区"]
+					},
+					{
+						"name" : "深圳市" ,
+						"area" : ["福田区","罗湖区","南山区","宝安区","龙岗区"]
+					}
+				]
+			},
+			{"name" : "河南省" ,
+				"city" : [
+					{
+						"name" : "郑州市" ,
+						"area" : ["中原区","二七区","管城回族区","金水区"]
+					},
+					{
+						"name" : "洛阳市" ,
+						"area" : ["西工区","老城区","瀍河回族区","涧西区"]
+					}
+				]
+			},
+			{"name" : "江西省" ,
+				"city" : [
+					{
+						"name" : "南昌市" ,
+						"area" : ["东湖区","西湖区","青云谱区","湾里区"]
+					},
+					{
+						"name" : "九江市" ,
+						"area" : ["浔阳区","庐山区","瑞昌市","九江县"]
+					}
+				]
+			},
+		];
+
+		function Init(){
+			for(var i = 0; i < province.length; i++){
+				$("#province").append("<option>"+ province[i].name+"</option>")
+			}
+		}
+		Init();
+
+		//二级联动
+		$("#city").change(function(){
+			var pro_index = $("#province option:selected").index();
+			var city_index = $("#city option:selected").index();
+			var areaWrap = $("#area");
+			areaWrap.empty().append("<option>请选择区域</option>");
+
+			if(city_index>0){
+				var area = province[pro_index-1].city[city_index-1].area;
+				for(var i = 0; i < area.length; i++){
+					areaWrap.append("<option>"+ area[i] +"</option>");
+				}
+			}
+		});
+
+		//一级联动
+		$("#province").change(function(){
+			var pro_index = $("#province option:selected").index();
+			var cityWrap = $("#city");
+			var areaWrap = $("#area");
+			cityWrap.empty().append("<option>请选择城市</option>");
+			areaWrap.empty().append("<option>请选择区域</option>");
+
+			if(pro_index > 0){
+				var city = province[pro_index-1].city;
+				for(var i = 0; i < city.length; i++){
+					cityWrap.append("<option>"+ city[i].name +"</option>");
+				}
+			}
+		})
+
+	});
+</script>
+<script>
+	$(".submitBtn").click(function(){
+		var thisVal = $("#myInput").val();
+		if(thisVal == ""){
+			$("#myInput").ShowWarnTip({
+				id: 'inputCheckTip',
+				html: '输入框的内容不能为空',
+				offsetY: 2,
+				offsetX: 12
+			});
+		}
+	});
+
+	$("#myInput").click(function(){
+		$("#inputCheckTip").RemoveTip();
+	})
+</script>
+<script>
+	$(function () {  
+	    $('#btnShow').click(function (event) {  
+	        //取消事件冒泡  
+	        var e = window.event || event;
+	        if(e.stopPropagation){
+	        	 e.stopPropagation();  
+	        }else{
+	        	e.cancelBubble = true;
+	        }
+	       
+	         //按钮的toggle,如果div是可见的,点击按钮切换为隐藏的;如果是隐藏的,切换为可见的。  
+	        $('#divTop').toggle('slow');  
+			return false;
+	    });  
+	    //点击空白处隐藏弹出层，下面为滑动消失效果和淡出消失效果。
+		$(document).click(function(event){
+			var _con = $('#divTop');   // 设置目标区域
+			 if(!_con.is(event.target) && _con.has(event.target).length === 0){ // Mark 1
+				//$('#divTop').slideUp('slow');   //滑动消失
+				$('#divTop').hide(1000);          //淡出消失
+			}
+		});
+	 })
+</script>
+</html>

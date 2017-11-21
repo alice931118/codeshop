@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ckplayer-超酷网页视频播放器</title>
+<meta name="keywords" content="flv播放器,f4v,mp4,hlv,rtmp播放器,网页视频播放器,ckplayer官网,视频流,播放器" />
+<meta name="description" content="ckplayer(超酷网页视频播放器),支持http协议下的flv,f4v,mp4,支持rtmp视频流和rtmp视频回放，支持m3u8格式，是你做视频直播，视频点播的理想播放器 " />
+<meta name="author" content="ckplayer,超酷网页视频播放器" />
+<meta name="copyright" content="ckplayer,超酷网页视频播放器" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link rel="shortcut icon" href="favicon.ico">
+<script type="text/javascript" src="ckplayer/ckplayer.js" charset="utf-8"></script>
+<style type="text/css">
+body{margin:0px;font-family:"Microsoft YaHei","YaHei","微软雅黑","SimHei","黑体";}
+.logo {
+	text-align: center;
+	height: 48px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.tab {
+	line-height: 42px;
+	text-align: center;
+	background-color: #09F;
+	color: #FFF;
+	height: 42px;
+}
+.tab a {
+	color: #FFF;
+	text-decoration: none;
+}
+.ver {
+	line-height: 50px;
+	text-align: center;
+	font-size: 36px;
+	padding-top: 15px;
+	color: #333;
+}
+.sim {
+	font-size: 24px;
+	line-height: 50px;
+	text-align: center;
+	color: #666;
+}
+#a1 {
+}
+.wk {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	height: 50px;
+}
+.copy {
+	text-align: center;
+	line-height: 36px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #999;
+	background-color: #F6F6F6;
+	color: #2E2E2E;
+	position: fixed;
+	bottom: 0px;
+	z-index: 10;
+	width: 100%;
+}
+.copy a {
+	color: #2E2E2E;
+	text-decoration: none;
+}
+.w_2{
+	line-height:50px;
+	height:50px;
+	text-align:center;
+	background-color:#09F;
+	color:#FFF;
+	cursor:pointer;
+	margin-right: auto;
+	margin-left: auto;
+	width: 50%;
+}
+.w_1{
+	line-height:50px;
+	height:50px;
+	width:50%;
+	text-align:center;
+	background-color:#F60;
+	margin-right: auto;
+	margin-left: auto;
+}.w_1 a{color:#FF0;text-decoration:none;}.w_3{
+	line-height:50px;
+	height:50px;
+	width:50%;
+	text-align:center;
+	background-color:#093;
+	margin-right: auto;
+	margin-left: auto;
+}.w_3 a{color:#FFF;text-decoration:none;}
+</style>
+</head>
+
+<body>
+
+
+<div id="a1"></div>
+<div class="wk"><div class="w_2" onClick="ckshow()">观看演示</div></div>
+<div class="wk"><div class="w_1"><a href="/bbs/forum.php?mod=viewthread&amp;tid=9868">下载使用</a></div></div>
+<div class="wk">
+  <div class="w_3"><a href="/tool/flashvars.htm;">在线配置功能</a></div></div>
+<div class="copy">ckplayer官网手机版，仅供测试播放器兼容性</div>
+<script type="text/javascript">
+	function addCkplayer() {
+		var flashvars = {
+			f: 'http://movie.ks.js.cn/flv/other/2014/06/20-2.flv',
+			c: 0,
+			p: 1,
+			e: 0,
+			l:'',
+			d:'http://gtms03.alicdn.com/tps/i3/TB1I7dXFVXXXXc6XXXXW9oM7FXX-336-280.jpg|http://gtms02.alicdn.com/tps/i2/TB1NJP3FFXXXXXUaXXXW9oM7FXX-336-280.jpg',
+			u:'http://s.click.taobao.com/t?e=m%3D2%26s%3DrIsIM6cahLYcQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAio2TV4pRN9kIt9UHUMzYhIsiKEjuQCZcWP0gIPQebZipnZVSaET%2BxxUTRWzt8fZbedn1BbglxZYxUhy8exlzcq9AmARIwX9K2Zg%2BdzdQFOwfMRvoxSVDSdLyrb2g0H2G5JcxXijM%2BwneEHpPTskRHlFYAAV9gnNuPTL%2BS6jTvPzN7YQp05KcLcunFBf1wJnpg%3D%3D|http://s.click.taobao.com/t?e=m%3D2%26s%3DE6ZBQlHm0DIcQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAio2TV4pRN9kVpTHHGZ%2BJu8siKEjuQCZcWP0gIPQebZipnZVSaET%2BxxsCGOXP5dFDedn1BbglxZYxUhy8exlzcq9AmARIwX9K%2BnbtOD3UdznPV1H2z0iQv9NkKVMHClW0QbMqOpFMIvnvjQXzzpXdTHGJe8N%2FwNpGw%3D%3D',
+			my_pic: 'http://www.ckplayer.com/down/pic6.4.jpg',
+			my_url:encodeURIComponent(window.location.href)
+		};
+		var video = ['http://movie.ks.js.cn/flv/other/2014/06/20-2.mp4->video/mp4', 'http://www.ckplayer.com/webm/1.webm->video/webm', 'http://www.ckplayer.com/webm/1.ogv->video/ogg'];
+		CKobject.embed('ckplayer/ckplayer.swf', 'a1', 'ckplayer_a1', '100%', '100%', false, flashvars, video);
+	}
+	function ckshow(){
+		var h=parseInt(CKobject._K_('a1').style.height);
+		if(h!=260){
+			CKobject._K_('a1').style.height='260px';
+			addCkplayer();
+		}
+		else{
+			CKobject._K_('a1').style.height='0px';
+			CKobject._K_('a1').innerHTML='';
+		}
+	}
+	function playerstop(){
+		alert('播放结束，进行跳转');
+		 window.location.href=window.location.href;
+	}
+	ckshow();
+</script>
+</body>
+</html>

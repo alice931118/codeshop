@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>juheDMP</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="聚合数据 数字化营销方案 数据服务中心">
+    <meta name="description" content="释放数据潜力让广告不再受冷漠">
+
+    <link rel="shortcut icon" href="images/dmp/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="css/jquery.fullPage.css"/>
+    <link type="text/css" rel="stylesheet" href="css/bookblock.css"/>
+    <link type="text/css" rel="stylesheet" href="css/jquery.fancybox.css"/>
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/jquery.fullPage.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/jquery.fancybox.pack.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+
+
+            $('#fullpage').fullpage({
+                sectionsColor: ['#ffffff', '#ffffff', '#018afe', '#ffffff', '#018afe', '#2c3242'],
+                menu: '#navbar-example',
+                'navigation': true,
+                'navigationColor': "#008afe",
+                'navigationTooltips': ['TOP', 'WHY', 'HOW', 'WHAT', 'WHO'],
+
+                afterLoad: function (anchorLink, index) {
+                    if (index == 4) {
+                        $('div.iamges img#icon1').animate({
+                            opacity: '1',
+                        });
+                        $('div.iamges img#icon2').delay(500).animate({
+                            opacity: '1',
+                        });
+                        $('div.iamges img#icon3').delay(1000).animate({
+                            opacity: '1',
+                        });
+                        $('div.iamges #icon4').delay(1300).animate({
+                            left:'350px',
+                            opacity: '0',
+                        });
+                        $('div.iamges #icon5').delay(1400).animate({
+                            left:'555px',
+                            opacity: '0',
+                        });
+                        $('div.iamges #icon6').delay(1500).animate({
+                            left:'750px',
+                            opacity: '0',
+                        });
+                        $('div.iamges #icon7').delay(1600).animate({
+                            left:'945px',
+                            opacity: '0',
+                        });
+                    }
+                }
+            });
+
+            $(window).resize(function () {
+                autoScrolling();
+            });
+
+            function autoScrolling() {
+                var $ww = $(window).width();
+                if ($ww < 1024) {
+                    $.fn.fullpage.setAutoScrolling(false);
+                } else {
+                    $.fn.fullpage.setAutoScrolling(true);
+                }
+            }
+
+            autoScrolling();
+
+
+            $('#fp-nav a').mouseover(function () {
+                $('#fp-nav a.active').addClass("fp-nav-show");
+            });
+
+            $('#fp-nav a').mouseout(function () {
+                $('#fp-nav a.active').removeClass("fp-nav-show");
+            });
+
+
+            $('a#signup').fancybox({
+                'padding': "0",
+                helpers: {
+                    overlay: {
+                        closeClick: false,
+                    },
+                }
+            });
+
+            $("input:text").focus(function () {
+                $(this).css("border-bottom", "2px solid #008afe");
+            });
+            $("input:text").blur(function () {
+                $(this).css("border-bottom", "0px solid #008afe");
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+<!-- #wrapper start -->
+<div id="wrapper" class="minWidth">
+
+
+    <div id="fullpage">
+
+
+        <div class="section" id="section1">
+            <div class="logo"><img src="images/dmp/logo.png" alt="聚合数据"></div>
+            <div class="inner">
+                <div class="catchCopy">
+                    <h1>释放数据潜力</h1><span>让广告不再受冷漠</span>
+
+                    <p>继承聚合数据基因，一站式为您提供专业数字化营销方案的数据服务中心</p>
+
+                    <div class="but">
+                        <a id="signup" href="#sign">申请试用</a>
+
+                        <div style="display:none;">
+                            <div id="sign">
+                                <div class="headerBlock">
+                                    <p>申请试用<small id="msg"></small></p>
+                                </div>
+                                <div class="bodyBlock">
+                                    <form id="trial" class="clearfix">
+                                        <div class="form1">
+                                            <input type="text" name="name" placeholder="请输入您的姓名">
+                                            <div class="clearfix" style="height:20px;width:300px;">
+                                                <span id="error_name" class="error"></span>
+                                            </div>
+                                            <input type="text" name="email" placeholder="请输入您的邮箱">
+                                            <div class="clearfix" style="height:20px;width:300px;">
+                                                <span id="error_email" class="error"></span>
+                                            </div>
+                                            <input type="text" name="phone" placeholder="请输入您的手机号">
+                                            <div class="clearfix" style="height:20px;width:300px;">
+                                                <span id="error_phone" class="error"></span>
+                                            </div>
+                                            <input type="text" name="company" placeholder="请输入您的公司名称">
+                                            <div class="clearfix" style="height:20px;width:300px;">
+                                                <span id="error_company" class="error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form2">
+                                            <select name="industry">
+                                                <option value="">请选择公司所属行业</option>
+                                                <option value="广告">广告</option>
+                                                <option value="汽车">汽车</option>
+                                                <option value="快消品">快消品</option>
+                                                <option value="电子商务">电子商务</option>
+                                                <option value="教育">教育</option>
+                                                <option value="金融服务">金融服务</option>
+                                                <option value="保险">保险</option>
+                                                <option value="医疗保健和制药">医疗保健和制药</option>
+                                                <option value="媒体和娱乐">媒体和娱乐</option>
+                                                <option value="房地产">房地产</option>
+                                                <option value="零售">零售</option>
+                                                <option value="IT">IT</option>
+                                                <option value="电信">电信</option>
+                                                <option value="电子电器">电子电器</option>
+                                                <option value="旅游">旅游</option>
+                                                <option value="能源">能源</option>
+                                                <option value="交通运输">交通运输</option>
+                                                <option value="非盈利">非盈利</option>
+                                                <option value="生物技术">生物技术</option>
+                                                <option value="饰品和饮料">饰品和饮料</option>
+                                                <option value="游戏">游戏</option>
+                                                <option value="政府">政府</option>
+                                                <option value="非盈利">非盈利</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                                            <div class="clearfix" style="height:20px;width:300px;">
+                                                <span id="error_industry" class="error"></span>
+                                            </div>
+
+                                            <textarea name="message" placeholder="留言...(200字以内)"></textarea>
+                                            <div class="clearfix" style="height:20px;width:300px;">
+                                                <span id="error_message" class="error"></span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="footerBlock">
+                                    <a id="submit" href="#">提交</a>
+                                </div>
+
+                                <script>
+                                    $("#submit").click(function() {
+                                        // validate name
+                                        var name = $('#trial input[name="name"]').val();
+                                        if (name.length == 0) {
+                                            $('#trial input[name="name"]').focus();
+                                            $('#error_name').html("姓名不可为空");
+                                            return;
+                                        }
+                                        if (name.length > 32) {
+                                            $('#trial input[name="name"]').focus();
+                                            $('#error_name').html("姓名不可过长");
+                                            return;
+                                        }
+                                        $('#error_name').html("");
+
+
+                                        // validate email
+                                        var email = $('#trial input[name="email"]').val();
+                                        if (email.length == 0) {
+                                            $('#trial input[name="email"]').focus();
+                                            $('#error_email').html("邮箱不可为空");
+                                            return;
+                                        }
+                                        if (email.length > 128 || ! (/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+$/).test(email)) {
+                                            $('#trial input[name="email"]').focus();
+                                            $('#error_email').html("邮箱格式有误");
+                                            return;
+                                        }
+                                        $('#error_email').html("");
+                                        // validate phone
+                                        var phone = $('#trial input[name="phone"]').val();
+                                        if (phone.length == 0) {
+                                            $('#trial input[name="phone"]').focus();
+                                            $('#error_phone').html("手机号不可为空");
+                                            return;
+                                        }
+                                        if (! (/^1(3[0-9]|45|47|5[0-35-9]|8[0-9])\d{8}$/).test(phone)) {
+                                            $('#trial input[name="phone"]').focus();
+                                            $('#error_phone').html("手机号格式有误");
+                                            return;
+                                        }
+                                        $('#error_phone').html("");
+                                        // validate company
+                                        var company = $('#trial input[name="company"]').val();
+                                        if (company.length == 0) {
+                                            $('#trial input[name="company"]').focus();
+                                            $('#error_company').html("公司名称不可为空");
+                                            return;
+                                        }
+                                        if (company.length > 128) {
+                                            $('#trial input[name="company"]').focus();
+                                            $('#error_company').html("公司名称不可过长");
+                                            return;
+                                        }
+                                        $('#error_company').html("");
+                                        // validate industry
+                                        var industry = $('#trial select[name="industry"]').val();
+                                        if (industry.length == 0) {
+                                            $('#trial select[name="industry"]').focus();
+                                            $('#error_industry').html("公司所属行业不可为空");
+                                            return;
+                                        }
+                                        $('#error_industry').html("");
+                                        // validate message
+                                        var message = $('#trial textarea[name="message"]').val();
+                                        if (message.length > 200) {
+                                            $('#trial textarea[name="message"]').focus();
+                                            $('#error_message').html("留言须在200字以内");
+                                            return;
+                                        }
+                                        $('#error_message').html("");
+
+
+
+
+
+                                        $.ajax({
+                                            url: '//o03mhgx77.qnssl.com/ajax/data/trial',
+                                            type: 'POST',
+                                            dataType: 'json',
+                                            data: $('#trial').serialize(),
+                                            success: function (json) {}
+                                        });
+
+                                        $('#msg').html("提交成功！我们会尽快与您取得联系，谢谢！");
+                                        $("#trial")[0].reset();
+                                        
+                                        setTimeout(function () {
+                                            $.fancybox.close();
+                                            $('#msg').html("");
+                                        }, 2000);
+                                    })
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mouse"><img src="images/dmp/mouse.png"></div>
+            </div>
+        </div>
+
+
+        <div class="section" id="section2">
+            <div class="inner">
+                <h2><img src="images/dmp/tle_1.png"><br>为什么选择聚合DMP</h2>
+
+                <div class="clearfix" style="margin:0 auto;width:960px;">
+                    <div class="flip-container" style="cursor: pointer;">
+                        <div class="front item">
+                            <div class="head headOne">
+                                <p>DATA<br><span>数据困境</span></p>
+                                <img src="images/dmp/sec2_hea_1-2.png" class="xuanzhuan1">
+                                <img src="images/dmp/sec2_hea_1-3.png" class="xuanzhuan2">
+                                <img src="images/dmp/sec2_hea_1-4.png" class="xuanzhuan3">
+                            </div>
+                            <ul class="txt txt1">
+                                <li><p>数据来源多种，难以整合并利用其全面了解客户</p></li>
+                                <li><p>媒体消费碎片化，广告无法触及理想的消费者</p></li>
+                            </ul>
+                        </div>
+
+                        <div class="back item back1">
+                            <div class="head headOne"><p>解决方案</p></div>
+                            <ul class="solution">
+                                <li>我们集各种数据于统一平台，以用户为中心进行全方位的数据分析与管理</li>
+                                <li>让您更了解用户，更大规模地将更适宜的广告内容投向更理想的客户</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flip-container" style="cursor: pointer;">
+                        <div class="front item">
+                            <div class="head headTwo">
+                                <p>BUSINESS<br><span>行业困境</span></p>
+                                <img src="images/dmp/sec2_hea_2-2.png" class="xuanzhuan4">
+                            </div>
+                            <ul class="txt txt2">
+                                <li><p>不同行业，广告特性存在差异性</p></li>
+                                <li><p>市场上缺乏针对具体行业领域细分的DMP</p></li>
+                            </ul>
+                        </div>
+
+                        <div class="back item back2">
+                            <div class="head headTwo"><p>解决方案</p></div>
+                            <ul class="solution">
+                                <li>我们拥有细分行业的标签体系</li>
+                                <li>更专注的行业解决方案使您更准确地作出针对行业的营销策略</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flip-container" style="cursor: pointer;">
+                        <div class="front item">
+                            <div class="head headThree">
+                                <p>TECHNOLOGY<br><span>技术困境</span></p>
+                                <img src="images/dmp/sec2_hea_3-2.png" class="xuanzhuan5">
+                                <img src="images/dmp/sec2_hea_3-2.png" class="xuanzhuan6">
+                            </div>
+                            <ul class="txt txt3">
+                                <li><p>
+
+                                    <p>用户行为变化莫测，前所未有</p></li>
+                                <li><p>统一观测、分析、处理反馈数据有技术难题</p></li>
+                            </ul>
+                        </div>
+
+                        <div class="back item back3">
+                            <div class="head headThree"><p>解决方案</p></div>
+                            <ul class="solution">
+                                <li>可靠的算法建模，预测多变的用户行为，给出最佳应对策略</li>
+                                <li>实时的广告投放效果监测，助您及时调整营销策略</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section" id="section3">
+            <div class="inner">
+                <h2><img src="images/dmp/tle_2.png"><br>聚合DMP如何服务</h2>
+
+                <div class="circle">
+                    <div id="ele1" onmouseover="show1()" onclick="show1()">
+                        <img id="img1" src="images/dmp/sec3_cir_1-1.png" alt="受众圈定">
+                        <img id="img2" src="images/dmp/sec3_cir_1-2.png" alt="受众圈定按钮">
+                    </div>
+                    <div id="ele2" onmouseover="show2()" onclick="show2()">
+                        <img id="img3" src="images/dmp/sec3_cir_2-1.png" alt="营销策划">
+                        <img id="img4" src="images/dmp/sec3_cir_2-2.png" alt="营销策划按钮">
+                    </div>
+                    <div id="ele3" onmouseover="show3()" onclick="show3()">
+                        <img id="img5" src="images/dmp/sec3_cir_3-1.png" alt="统计分析">
+                        <img id="img6" src="images/dmp/sec3_cir_3-2.png" alt="统计分析按钮">
+                    </div>
+                </div>
+
+                <div class="introduction">
+                    <div id="intro" class="intro">
+                        <h4>受众圈定</h4>
+                        <ul>
+                            <li><p>丰富的标签体系，灵活、便捷的标签自由组合</p></li>
+                            <li><p>自定义多种符合您不同要求的细分人群</p></li>
+                        </ul>
+                    </div>
+                    <div id="intro1" style="display:none;" class="intro">
+                        <h4>受众圈定</h4>
+                        <ul>
+                            <li><p>丰富的标签体系，灵活、便捷的标签自由组合</p></li>
+                            <li><p>自定义多种符合您不同要求的细分人群</p></li>
+                        </ul>
+                    </div>
+                    <div id="intro2" style="display:none;" class="intro">
+                        <h4>营销策划</h4>
+                        <ul>
+                            <li><p>管理您的创意和人群，让营销有计划投放</p></li>
+                            <li><p>多种媒体渠道无缝对接，得到广告展示机会同时拥有有效的<br>安全防护</p></li>
+                        </ul>
+                    </div>
+                    <div id="intro3" style="display:none;" class="intro">
+                        <h4>统计分析</h4>
+                        <ul>
+                            <li><p>对活动进行整体及分渠道营销效果数据观测，指导优化投放</p></li>
+                            <li><p>对细分人群投放效果进行监测，助您找到最佳人群</p></li>
+                            <li><p>不同时间区间、不同渠道、不同人群全方位报告，及时掌控ROI</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    function show1() {
+                        document.getElementById("intro").style.display = "none";
+                        document.getElementById("intro1").style.display = "block";
+                        document.getElementById("intro2").style.display = "none";
+                        document.getElementById("intro3").style.display = "none";
+                        $("#ele1").addClass("animations");
+                        $("#ele2").removeClass("animations");
+                        $("#ele3").removeClass("animations");
+                    }
+                    function show2() {
+                        document.getElementById("intro").style.display = "none";
+                        document.getElementById("intro2").style.display = "block";
+                        document.getElementById("intro1").style.display = "none";
+                        document.getElementById("intro3").style.display = "none";
+                        $("#ele2").addClass("animations");
+                        $("#ele1").removeClass("animations");
+                        $("#ele3").removeClass("animations");
+                    }
+                    function show3() {
+                        document.getElementById("intro").style.display = "none";
+                        document.getElementById("intro1").style.display = "none";
+                        document.getElementById("intro2").style.display = "none";
+                        document.getElementById("intro3").style.display = "block";
+                        $("#ele3").addClass("animations");
+                        $("#ele1").removeClass("animations");
+                        $("#ele2").removeClass("animations");
+                    }
+
+                    show1();
+                </script>
+            </div>
+        </div>
+
+
+        <div class="section" id="section4">
+            <div class="inner">
+                <h2><img src="images/dmp/tle_3.png"><br>聚合DMP都有什么</h2>
+
+                <div class="iamges">
+                    <img id="icon1" src="images/dmp/sec4_icn_1.jpg" alt="渠道">
+                    <img id="icon2" src="images/dmp/sec4_icn_2.png" alt="数据源">
+                    <img id="icon3" src="images/dmp/sec4_icn_3.jpg" alt="标签">
+                    <div id="icon4" style="width: 140px;height: 16px;background: #FFFFFF;"></div>
+                    <div id="icon5" style="width: 140px;height: 16px;background: #FFFFFF;"></div>
+                    <div id="icon6" style="width: 140px;height: 16px;background: #FFFFFF;"></div>
+                    <div id="icon7" style="width: 140px;height: 16px;background: #FFFFFF;"></div>
+                </div>
+                <div class="clearfix">
+                    <dl>
+                        <dt>渠道</dt>
+                        <dd>定制化的营销方案<br>安全可靠的无缝媒体对接<br>多样的广告创意类型</dd>
+                    </dl>
+                    <dl>
+                        <dt>数据源</dt>
+                        <dd>丰富的数据来源<br>来自聚合平台API请求的数据<br>优质、准确的数据供给</dd>
+                    </dl>
+                    <dl>
+                        <dt>标签</dt>
+                        <dd>靠谱的处理能能力<br>横向多维度纵向多类目标签体系<br>行业领域细分标签</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section" id="section5">
+            <div class="inner">
+                <h2><img src="images/dmp/tle_4.png"><br>谁已从聚合DMP获益</h2>
+
+                <div class="container">
+                    <div class="main clearfix">
+                        <div class="bb-custom-wrapper">
+
+                            <div id="bb-bookblock" class="bb-bookblock">
+                                <div class="bb-item clearfix">
+
+                                    <img src="images/dmp/sec5_bor_1.png" style="float:left;">
+
+                                    <div class="bb-leftBlock">
+                                        <p><img src="images/dmp/sec5_logo_1.png" alt="京东金融"></p>
+
+                                        <p class="bb-text">
+                                            聚合DMP通过提供更有效的移动营销广告产品，更大规模触及潜在客户，帮助京东金融开辟了新的客户来源，提升了程序化广告效率，同步整合数据同时也保障了安全。截止2015年12月31日，京东金融微信公众账户关注用户达76000个。</p>
+                                    </div>
+                                    <img src="images/dmp/sec5_img_1.png" style="float:left;"/>
+                                    <img src="images/dmp/sec5_bor_2.png">
+                                </div>
+                                <div class="bb-item clearfix">
+                                    <img src="images/dmp/sec5_bor_1.png" style="float:left;">
+
+                                    <div class="bb-leftBlock">
+                                        <p><img src="images/dmp/sec5_logo_2.png" alt="沃尔沃"></p>
+
+                                        <p class="bb-text">
+                                            聚合DMP通过强大的技术堆栈，挖掘客户对汽车偏好细节信息，识别并分析正确受众群体，帮助沃尔沃驾驭数据，发挥数据最大潜力，使沃尔沃在现有基础上实现了更多更高质量的转化。</p>
+                                    </div>
+                                    <div><img src="images/dmp/sec5_img_2.png" style="float:left;"/></div>
+                                    <img src="images/dmp/sec5_bor_2.png">
+                                </div>
+                                <div class="bb-item clearfix">
+                                    <img src="images/dmp/sec5_bor_1.png" style="float:left;">
+
+                                    <div class="bb-leftBlock">
+                                        <p><img src="images/dmp/sec5_logo_3.png" alt="房多多"></p>
+
+                                        <p class="bb-text">
+                                            聚合DMP为房多多量身打造地产行业数据驱动的营销推广方案。通过简化的实时流程与自动优化，实时掌控反馈信息与行业洞察，使其能够精准触达理想受众的同时又做到了敏捷高效。</p>
+                                    </div>
+                                    <div><img src="images/dmp/sec5_img_3.png" style="float:left;"/></div>
+                                    <img src="images/dmp/sec5_bor_2.png">
+                                </div>
+                                <div class="bb-item clearfix">
+                                    <img src="images/dmp/sec5_bor_1.png" style="float:left;">
+
+                                    <div class="bb-leftBlock">
+                                        <p><img src="images/dmp/sec5_logo_4.png" alt="精锐教育"></p>
+
+                                        <p class="bb-text">
+                                            聚合DMP通过收集、管理、分析与处理教育行业信息，结合第一方客户数据，帮助精锐教育打破传统营销瓶颈，树立品牌形象，驱动用户增长的基础上提升了行业内竞争力。注册用户显著增加。</p>
+                                    </div>
+                                    <img src="images/dmp/sec5_img_4.png" style="float:left;"/>
+                                    <img src="images/dmp/sec5_bor_2.png">
+                                </div>
+                            </div>
+
+                            <nav>
+                                <a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left"></a>
+                                <a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right"></a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- /container -->
+
+
+                <script src="js/jquery.bookblock.js"></script>
+                <script>
+                    var Page = (function () {
+
+                        var config = {
+                                    $bookBlock: $('#bb-bookblock'),
+                                    $navNext: $('#bb-nav-next'),
+                                    $navPrev: $('#bb-nav-prev'),
+                                },
+                                init = function () {
+                                    config.$bookBlock.bookblock({
+                                        speed: 800,
+                                        shadowSides: 0.8,
+                                        shadowFlip: 0.7
+                                    });
+                                    initEvents();
+                                },
+                                initEvents = function () {
+
+                                    var $slides = config.$bookBlock.children();
+
+                                    // add navigation events
+                                    config.$navNext.on('click touchstart', function () {
+                                        config.$bookBlock.bookblock('next');
+                                        return false;
+                                    });
+
+                                    config.$navPrev.on('click touchstart', function () {
+                                        config.$bookBlock.bookblock('prev');
+                                        return false;
+                                    });
+
+                                    // config.$navFirst.on( 'click touchstart', function() {
+                                    // 	config.$bookBlock.bookblock( 'first' );
+                                    // 	return false;
+                                    // } );
+
+                                    // config.$navLast.on( 'click touchstart', function() {
+                                    // 	config.$bookBlock.bookblock( 'last' );
+                                    // 	return false;
+                                    // } );
+
+                                    // add swipe events
+                                    $slides.on({
+                                        'swipeleft': function (event) {
+                                            config.$bookBlock.bookblock('next');
+                                            return false;
+                                        },
+                                        'swiperight': function (event) {
+                                            config.$bookBlock.bookblock('prev');
+                                            return false;
+                                        }
+                                    });
+
+                                    // add keyboard events
+                                    $(document).keydown(function (e) {
+                                        var keyCode = e.keyCode || e.which,
+                                                arrow = {
+                                                    left: 37,
+                                                    up: 38,
+                                                    right: 39,
+                                                    down: 40
+                                                };
+
+                                        switch (keyCode) {
+                                            case arrow.left:
+                                                config.$bookBlock.bookblock('prev');
+                                                break;
+                                            case arrow.right:
+                                                config.$bookBlock.bookblock('next');
+                                                break;
+                                        }
+                                    });
+                                };
+
+                        return {init: init};
+
+                    })();
+                </script>
+                <script>
+                    Page.init();
+                </script>
+            </div>
+
+
+            <div class="bottomLogo">
+                <div class="inner">
+                    <div class="triangle-down"></div>
+
+                    <ul class="clearfix">
+                        <li id="logo1"><img src="images/dmp/sec5_logos_1.png" alt="多盟"></li>
+                        <li id="logo2"><img src="images/dmp/sec5_logos_2.png" alt="聚合数据"></li>
+                        <li id="logo3"><img src="images/dmp/sec5_logos_3.png" alt="京东金融"></li>
+                        <li id="logo4"><img src="images/dmp/sec5_logos_4.png" alt="房多多"></li>
+                        <li id="logo5"><img src="images/dmp/sec5_logos_5.png" alt="沃尔沃"></li>
+                        <li id="logo6"><img src="images/dmp/sec5_logos_6.png" alt="链家"></li>
+                        <li id="logo7"><img src="images/dmp/sec5_logos_7.png" alt="精锐教育"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fp-auto-height" id="section6">
+            <footer class="inner">
+                <p>依托聚合数据银行，具有数据文化基因，提供多样而专业的数字化营销方案的DMP平台</p>
+
+                <div class="but">
+                    <a id="signup" href="#sign">立即申请</a>
+                </div>
+                <p class="copyright">Copyright 2016 <span>Datahub</span>. All Rights Reserved&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;苏ICP备14006450号-3
+                </p>
+            </footer>
+
+        </div>
+
+    </div>
+
+
+</div>
+<!-- #wrapper end -->
+
+</body>
+</html>

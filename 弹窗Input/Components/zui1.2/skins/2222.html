@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>财务中心管理系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link href="/financecommon/Content/Components/ace/css/bootstrap.css" type="text/css" rel="stylesheet" />
+    
+    <link href="/financecommon/Content/Components/zui1.2/skins/common.css" type="text/css" rel="stylesheet" />
+    <link href="/financecommon/Content/Components/zui1.2/lib/chosen/chosen.min.css" type="text/css" rel="stylesheet" />
+    <link href="/financecommon/Content/Components/zui1.2/lib/datetimepicker/datetimepicker.min.css" type="text/css" rel="stylesheet" />
+    <link href="/financecommon/Content/Components/zui1.2/lib/datatable/zui.datatable.min.css" type="text/css" rel="stylesheet" />
+    <link href="/financecommon/Content/Styles/popstyle.css" type="text/css" rel="stylesheet" />
+    
+    <link href="/financecommon/Content/Components/ace/css/font-awesome.css" type="text/css" rel="stylesheet" />
+    <script src="/financecommon/Content/Components/ace/js/jquery.js" type="text/javascript"></script>
+    <script src="/financecommon/Content/Components/jquery1.8.2/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+    <script src="/financecommon/Content/Components/ace/js/bootstrap.js" type="text/javascript"></script>
+    <script src="/financecommon/Content/Components/ace/js/ace.js" type="text/javascript"></script>
+    <script src="/financecommon/Content/Components/zui1.2/lib/chosen/chosen.js" type="text/javascript"></script>
+    <script src="/financecommon/Content/Components/zui1.2/js/zui.js" type="text/javascript"></script>
+    <script src="/financecommon/Content/Components/zui1.2/lib/datetimepicker/datetimepicker.min.js" type="text/javascript"></script>
+    <script src="/financecommon/Content/Components/zui1.2/lib/datatable/zui.datatable.min.js" type="text/javascript"></script>
+    <script src="/financecommon/Content/Scripts/common.js" type="text/javascript"></script>
+    <script src="/financecommon/Content/Scripts/Msgbox.js" type="text/javascript"></script>
+    <script src="/financecommon/Content/Scripts/tips.pop.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var rootUrl = '/financecommon/';
+        var owner = "LayoutNew";
+        $(function () {
+            $('a[data-toggle]').dropdown();
+        });
+    </script>
+        <script>
+            if (navigator.userAgent.toLowerCase().indexOf("chrome") < 0 && navigator.userAgent.toLowerCase().indexOf("firefox") < 0)
+                window.location.href = "/financecommon/Account/BrowserDownload";
+        </script>
+</head>
+<body class="no-skin">
+    <div id="navbar" class="navbar navbar-default">
+        <div class="navbar-container" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header pull-left">
+                
+                <div class="logo_area">
+                    <img src="/financecommon/Content/Images/logo_01.png" />
+                </div>
+                <div class="word_area">
+                    <p class="line1">财务中心管理系统</p>
+                    <p class="line2">账务无死角 财务零损失</p>
+                </div>
+
+            </div>
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav nav-user">
+                    <li>
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle" aria-expanded="false">
+                            <span>
+                                <small>欢迎,</small>
+张咪
+                            </span>
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close" style="z-index:100001">
+                            <li class="dropdown-submenu pull-left">
+                                <a href="javascript:;">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    语言
+                                </a>
+                                <ul class="dropdown-menu" style="min-width: 160px;">
+                                        <li>
+                                            <a href="/financecommon/Account/ChangeLanguage?Language=3">日本语</a>
+                                        </li>
+                                        <li>
+                                            <a href="/financecommon/Account/ChangeLanguage?Language=2">English</a>
+                                        </li>
+                                        <li>
+                                            <a href="/financecommon/Account/ChangeLanguage?Language=1">中文</a>
+                                        </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://authority.17usoft.com/account/changepassword">
+                                    <i class="ace-icon fa fa-user"></i>
+                                    修改密码
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+                    <li><a href="/financecommon/Account/LogOut" onclick="javascript: return confirm(&#39;确认要退出吗？&#39;);">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-self">
+
+        <div id="sidebar" class="sidebar responsive" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
+            <ul class="nav nav-list" style="top: 0px;">
+                <li id="firstPage">
+                    <a href="/financecommon/">
+                        <i class="menu-icon fa fa-tachometer"></i>
+                        <span class="menu-text">首页</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                            <li data-id="26144">
+                                <a href="javascript:;" class="dropdown-toggle">
+                                    <i class="menu-icon fa fa-desktop "></i>
+                                    <span class="menu-text">
+                                        公共配置模块
+                                    </span>
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <li data-id="27956">
+                                <a href="javascript:;" class="dropdown-toggle">
+                                    <i class="menu-icon fa fa-desktop "></i>
+                                    <span class="menu-text">
+                                        费用报销
+                                    </span>
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+
+            </ul>
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            
+            <nav id='modulemenu'><ul class='nav'><li><span><i class='icon-angle-right'></i><span id=nav_i3> 首页</span></span></li></ul></nav>
+            <div class="page-content" style="padding-bottom: 0px">
+                
+
+<link href="/financecommon/Content/Styles/Home.css" rel="stylesheet" />
+<script type="text/javascript">
+    function AddWaitApprovalTab(controller, action, titile, website) {
+        debugger;
+        var random = parseInt(Math.random() * 10000) * (-1);
+        var url = "";
+        if (website == "bx") {
+            url = '/bx/' + controller + "/" + action;
+        } else {
+            url = '/financecommon/' + controller + "/" + action;
+        }
+        //parent.tabbar.addTab(random, titile, null, null, true, true);
+        //parent.tabbar.tabs(random).attachURL(url);
+        Click(url);
+    }
+
+    //查看指南文档
+    function ViewDocumentation(fileName, fileType) {
+        var sendData = [];
+        sendData.push({ name: "fileName", value: fileName });
+        sendData.push({ name: "fileType", value: fileType });
+        var url = '/financecommon/RoleExpenses/ViewDocumentation' + "?" + $.param(sendData);
+        Click(url);
+    }
+
+    $(function () {
+        $(".site-wrapper").find("li[name='invisible']").hide();
+        //$(".site-wrapper .more").on("click", function () {
+        //    var elem = $(this.parentNode);
+        //    if (elem.hasClass("back")) {
+        //        elem.removeClass("back");
+        //        $("label", this).html("更多");
+        //        $(this).parents(".site-wrapper").find("li[name='invisible']").hide();
+        //    } else {
+        //        elem.addClass("back");
+        //        $("label", this).html("收起");
+        //        $(this).parents(".site-wrapper").find("li[name='invisible']").show();
+        //    }
+        //});
+        //图片滚动
+        $('.carousel').carousel();
+    });
+    $(document).ready(function () {
+        debugger;
+        $.post('http://finance.17usoft.com/bx/Home/MyReceiptAppList', {}, function (text, status) {
+            $("#MyReceiptAppList").html(text);
+            $("#MyReceiptAppList_loading").hide();
+        });
+        $.post('http://finance.17usoft.com/bx/Home/MyReceiptAuditedList', {}, function (text, status) {
+            $("#MyReceiptAuditedList").html(text);
+            $("#MyReceiptAuditedList_loading").hide();
+        });
+        LoadHelpFile();
+    });
+    //小财通
+    function financeQA() {
+        Click('http://livechat.ly.com/inner/robotservice?p=28');
+    }
+    function LoadHelpFile() {
+        $.ajax({
+            url: '/financecommon/FileManage/NewestHelpFile',
+            type: "POST",
+            success: function (data) {
+                var url = '/financecommon/FileManage/ArticelDetail';
+                var licontent = "";
+                for (var i = 0; i < data.length; i++) {
+                    var createdOnMilliseconds = parseInt(data[i].CreatedOn.replace(/\D/igm, ""))
+                    detailurl = url + "?id=" + data[i].AID;
+                    licontent += "<li><a href='" + detailurl + "' target='_blank'>" + data[i].ArticleTitle + "</a><span class='createdon'>" + renderTime(createdOnMilliseconds) + "</span></li>";
+                }
+                $(".help").find("ul").html(licontent);
+            },
+        });
+        $.ajax({
+            url: '/financecommon/FileManage/NewestFinanceFile',
+            type: "POST",
+            success: function (data) {
+                var url = '/financecommon/FileManage/ArticelDetail';
+                var licontent = "";
+                for (var i = 0; i < data.length; i++) {
+                    var createdOnMilliseconds = parseInt(data[i].CreatedOn.replace(/\D/igm, ""))
+                    detailurl = url + "?id=" + data[i].AID;
+                    licontent += "<li><a href='" + detailurl + "' target='_blank'>" + data[i].ArticleTitle + "</a><span class='createdon'>" + renderTime(createdOnMilliseconds) + "</span></li>";
+                }
+                $(".finance").find("ul").html(licontent);
+            },
+        });
+    }
+    function renderTime(date) {
+        var da = new Date(date);
+        return da.getFullYear() + "-" + (da.getMonth() + 1) + "-" + da.getDate();
+    }
+</script>
+
+<div id="content_SiteContent" class="content">
+    <div id="myCarousel" class="carousel slide">
+        <ol class="carousel-indicators" style="margin-bottom: -10px;">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <a href="/financecommon/Template/Approval/smallTenpay.pdf" target="_blank">
+                    <img src="/financecommon/Content/Images/Home/smallPay.jpg" alt="" />
+                </a>
+            </div>
+            <div class="item">
+                <a href="/financecommon/Template/Approval/TemporaryPayRules.pdf" target="_blank">
+                    <img src="/financecommon/Content/Images/Home/TemporaryPay.jpg" alt="" />
+                </a>
+            </div>
+            <div class="item">
+                <a href="/financecommon/Template/Approval/POSApplyRules.docx" target="_blank">
+                    <img src="/financecommon/Content/Images/Home/banner.jpg" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="site-cont clearfix">
+        <div class="site-cont-left">
+            <div class="site-wrapper site-wrapper-nav">
+                <h3>
+                    <img src="/financecommon/Content/Images/myapplication.png" />&nbsp;<span>用户中心快捷入口</span>
+                </h3>
+                <div class="site-nav">
+                    <ul class="clearfix">
+                        <li><a href="javascript:Click('/bx/ExternalExpensePayment/AddExternalExpensePaymentIndex');">费用支付录入</a></li>
+                        <li><a href="javascript:Click('/bx/ExpenseDisbursement/Add');">费用报销录入</a></li>
+                        <li><a href="javascript:Click('/bx/TempExpense/AddTempExpenseIndex');">个人暂支录入</a></li>
+                        <li><a href="javascript:Click('/bx/RoleExpenses/TravelAddReceiptIndex');">差旅费报销录入</a></li>
+                        <li><a href="javascript:Click('/bx/ExpenseBudeget/AddReceiptIndex');">预算录入</a></li>
+                        <li><a href="javascript:Click('/financecommon/PayMent/CreateFundLoan');">资金拆借录入</a></li>
+                        <li class="bg-yellow"><a href="javascript:Click('/bx/TravelCard/NoReimbursementExpenseAnalyseIndex');">商务卡消费分析</a></li>
+                        <li class="bg-yellow"><a href="javascript:Click('/bx/TravelCard/DidiExpenseAnalyseIndex');">滴滴消费分析</a></li>
+                        <li class="bg-yellow"><a href="javascript:Click('/bx/CostBudget/UserRightIndex');">审批授权</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-wrapper">
+                <h3>
+                    <img src="/financecommon/Content/Images/myapplication.png" />&nbsp;<span>我申请的单据</span>
+                </h3>
+                <ul class="lengthmore clearfix">
+                    <li id="MyReceiptAppList">
+                        <div id="MyReceiptList_loading" style="height: 50px; padding: 10px;">加载中……</div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>支付管理</strong>
+                            <ul class="expense-ul">
+                                        <li>暂无</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="site-wrapper">
+                <h3>
+                    <img src="/financecommon/Content/Images/guide.png" />&nbsp;<span>待审核单据</span>
+                </h3>
+                <ul class="lengthmore clearfix">
+                    <li id="MyReceiptAuditedList">
+                        <div id="MyReceiptAuditedList_loading" style="height: 50px; padding: 10px;">加载中……</div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>支付管理</strong>
+                            <ul class="expense-ul">
+                                            <li><i></i><a href="javascript:void(0)" style="cursor: default;">您有 <b class="tips-b">0</b> 笔[付款单]&nbsp;付款单审核 <span class="link" onclick="AddWaitApprovalTab('PayMent', 'PendingPayMentIndex','付款单审核')">点击进入</span></a></li>
+                                            <li><i></i><a href="javascript:void(0)" style="cursor: default;">您有 <b class="tips-b">0</b> 笔[对账单]&nbsp;对账单审核 <span class="link" onclick="AddWaitApprovalTab('PayMent', 'PendingSettlementIndex','对账单审核')">点击进入</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="site-cont-right">
+            <div class="other-modules">
+                <ul>
+                    <li class="list2" style="height: 65px">
+                        <a href="http://livechat.ly.com/inner/robotservice?p=28" target="_blank">
+                            <div style="float: left">
+                                <img src="/financecommon/Content/Images/smallTenpay.png" style="max-width: 50px; max-height: 50px; cursor:pointer;margin-top: -5px;" />
+                            </div>
+                            <div style="color: #FF973C; cursor: pointer; margin-top: 5px;">
+                                <div style="font-weight: bolder; font-size: 19px;">小财通 帮您忙</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list1">
+                        <a href="javascript:;">
+                            <h4>交流论坛<span>(暂未开通&nbsp;&nbsp;敬请期待)</span></h4>
+                            <p>关于财务相关知识的交流互动平台</p>
+                        </a>
+                    </li>
+                    <li class="list3">
+                       <a href="http://tcservice.17usoft.com/vacations/workplatform/AdviseManage/Suggest?jobnumber=13169&amp;projectname=财务系统&amp;skyeyeid=tcweb.finance.common" target="_blank"> 
+                            <h4>我要吐槽</h4>
+                            <p>欢迎大家提出任何与系统和工作相关的反馈</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="help site-wrapper site-wrapper-more">
+                <h3>
+                    <img src="/financecommon/Content/Images/help.png" />&nbsp;<span>系统使用手册</span>
+                    <a href="/financecommon/FileManage/Center?type=1" style="color: #FF973C; right: 40px; position: absolute; " target="_blank">全部></a>
+                </h3>
+                <ul>
+                    <li name="visible"><i></i><a href="/financecommon/Template/Approval/guanlibanfa201511.docx" target="_blank">同程旅游差旅报销管理办法</a></li>
+                        <li name="visible"><i></i><a href="/financecommon/Template/Approval/TravelCardOperationGuide.docx" target="_blank">商务卡使用说明</a></li>
+                        <li name="visible"><i></i><a href="/financecommon/Template/Approval/DidiExpressOperationGuide.docx" target="_blank">滴滴快车使用说明</a></li>
+                </ul>
+            </div>
+            <div class="finance site-wrapper site-wrapper-more">
+                <h3>
+                    <img src="/financecommon/Content/Images/help.png" />&nbsp;<span>财务制度</span>
+                    <a href="/financecommon/FileManage/Center?type=2" style="color: #FF973C; right: 40px; position: absolute; " target="_blank">全部></a>
+                </h3>
+                <ul>
+                    <li name="visible"><i></i><a href="/financecommon/Template/Approval/POSApplyRules.docx" target="_blank">扫描POS邮件申请规范<span style="color: red;">(请至少提前两周申请)</span></a></li>
+                    <li name="visible"><i></i><a href="javascript:void(0)" onclick="ViewDocumentation('InspectionRules.pdf', 'application/pdf')">门店收银岗位工作职责与考核规则</a></li>
+                    <li name="visible"><i></i><a href="/financecommon/Template/Approval/StoreOrderSteps.docx" target="_blank">各项目门店pos扫码支付流程和现金收款流程</a></li>
+                    <li name="visible"><i></i><a href="/financecommon/Template/Approval/POSOperationGuide.docx" target="_blank">门店扫码POS机操作说明</a></li>
+                    <li name="visible"><i></i><a href="/financecommon/Template/Approval/ProceedsGuide.docx" target="_blank">门店系统收款操作指南</a></li>
+                    <li name="visible"><i></i><a href="/financecommon/Template/Approval/RefundGuide.docx" target="_blank">门店系统退款操作指南</a></li>
+                    <li name="visible"><i></i><a href="/financecommon/Template/Approval/PayIntoGuide.docx" target="_blank">门店系统银行解款操作指南</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loadingData" class="modal modal-loading modal-backdrop fade in">
+    <div class="icon-spinner icon-spin loader"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <div id="loadingData" class="modal modal-loading modal-backdrop fade in">
+        <div class="icon-spinner icon-spin loader"></div>
+    </div>
+    <script>
+        (function () {
+            function buildSubmenu(nodes, id) {
+                var htmlStr = '<ul class="submenu nav-hide" style="display: none;">',
+                    node;
+                for (var i = 0, len = nodes.length; i < len; i++) {
+                    node = nodes[i];
+                    if (node.nodeType !== 1 || node.nodeName.toLowerCase() !== 'item') {
+                        continue;
+                    }
+                    htmlStr += '<li data-id="' + node.getAttribute('id') + '">';
+
+
+                    if (node.childNodes[0].nodeName.toLowerCase() === 'item') {
+                        htmlStr += '<a href="javascript:;" class="dropdown-toggle">' +
+                            '<i class="menu-icon fa fa-caret-right"></i>' +
+                            node.getAttribute('text') +
+                            '<b class="arrow fa fa-angle-down"></b>' +
+                            '</a>' + buildSubmenu(node.childNodes, id);
+
+                    } else {
+                        if (id.toString() === "31420") {
+                            htmlStr += '<a href="' + node.textContent + '" data-last="1" data-childid="' + node.getAttribute('id') + ' ">' +
+                                '<i class="menu-icon"></i>' +
+                                node.getAttribute('text') +
+                                '</a>' + '<b class="arrow"></b>';
+                        } else {
+                            htmlStr += '<a href="javascript:void(0)" data-last="1" onClick="Click(\'' + node.textContent + '\')" data-childid="' + node.getAttribute('id') + ' ">' +
+                                '<i class="menu-icon"> </i>' +
+                                node.getAttribute('text') +
+                                '</a>' + '<b class="arrow"></b>';
+                        }
+                    }
+                    htmlStr += '</li>';
+
+                }
+                return htmlStr + '</ul>';
+            }
+
+            var activeLinkLabel = null;
+            $("#sidebar").click(function (e) {
+                var target = e.srcElement || e.target;
+                if (target.nodeName.toLowerCase() == "a" && $(target).attr('data-last') == "1") {
+                    if (activeLinkLabel != null) {
+                        activeLinkLabel.css("background-color", "");
+                        activeLinkLabel.css("color", "");
+                    }
+                    activeLinkLabel = $(target);
+                    activeLinkLabel.css("background-color", "#f1f5f9");
+                    activeLinkLabel.css("color", "#4b88b7");
+                }
+            });
+            $('#sidebar > .nav-list > li').each(function (i, item) {
+                if (i === 0) {
+                    return;
+                }
+                var that = this;
+                var id = $(that).data("id");
+                $.ajax({
+                    url: rootUrl + 'Home/RenderMenu/' + item.getAttribute('data-id'),
+                    dataType: 'xml',
+                    success: function (data) {
+                        $(item).append(buildSubmenu(data.childNodes[0].childNodes, id));
+                        ExpandMenu();
+                        $(item).find("a[data-last=1]").parent("li").click(function () {
+                            SetStorage($(this).find("a").data("childid"));
+                        })
+
+                        var height = $(window).height();
+                        var navbar_height = $("#navbar").height();
+                        $("#sidebar").height(height - navbar_height);
+
+                        //最大化  最小化的时候 自适应
+                        $(window).on("resize", function () {
+                            var height = $(window).height();
+                            var navbar_height = $("#navbar").height();
+                            $("#sidebar").height(height - navbar_height);
+                        })
+                    }
+                });
+            })
+
+            //缺少审批人的单据,Pop弹窗通知财务流程部同事(需要通知的用户配置在枚举列表中)
+            if(0 > 0){
+                setInterval(getData, 1000*60*5);
+            }
+        })();
+
+        function Click(url) {
+            var iframe = document.createElement("iframe");
+            iframe.src = url;
+            iframe.height = $(document).height() - $("#navbar").height() - 10;
+            iframe.width = "100%";
+            iframe.setAttribute('frameborder', '0', 0);
+            $(".main-content-inner").html("");
+            $(".main-content-inner").css("padding-top", "55px");
+            $(".main-content-inner").append(iframe);
+        }
+
+        //firstId 一级菜单Id，childId 选中菜单Id
+        function ExpandMenu() {
+            var childId = sessionStorage.getItem("childId");
+            if (childId != null) {
+                var a = $("a[data-childId*='" + childId + "']")
+                a.addClass("aselected");
+                if (a.parent("li").data("id") != "") {
+                    a.parent("li").parent("ul").css("display", "block");
+                    a.parent("li").parent("ul").removeClass("nav-hide").addClass("nav-show");
+                    var ul = a.parent("li").parent("ul");
+                    if (ul.parent("li").data("id") != "") {
+                        ul.parent("li").parent("ul").css("display", "block");
+                        ul.parent("li").parent("ul").removeClass("nav-hide").addClass("nav-show");
+                        var ul1 = ul.parent("li").parent("ul");
+                        if (ul1.parent("li").data("id") != "") {
+                            ul1.parent("li").parent("ul").css("display", "block");
+                            ul1.parent("li").parent("ul").removeClass("nav-hide").addClass("nav-show");
+                        }
+                    }
+                }
+
+            }
+        }
+
+        //设置缓存
+        function SetStorage(childId) {
+            if (sessionStorage.getItem("childId") != null && sessionStorage.getItem("childId") != undefined) {
+                sessionStorage.removeItem("childId");
+            }
+            sessionStorage.setItem("childId", childId);
+        }
+
+        //侧边栏伸缩
+        $(".sidebar-toggle").click(function () {
+            var sidebarWidth = $(".sidebar-self").width();
+            var mainContent = $(".main-content");
+            mainContent.css("margin-left", "43px");
+            if (sidebarWidth == 43) {
+                mainContent.css("margin-left", "190px");
+            }
+        });
+
+        //内容域随屏幕改变的位置变化
+        window.addEventListener("resize", function () {
+            changePosition();
+        }, false);
+
+        changePosition();
+
+        function changePosition() {
+            var screenWidth = $(window).width();
+            var sidebarWidth = $(".sidebar-self").width();
+            if (screenWidth < 972) {
+                $(".main-content").css("margin-left", "0px");
+            } else {
+                $(".main-content").css("margin-left", sidebarWidth);
+            }
+        }
+
+        /*
+        每隔5分钟到系统后台查询是否有异常/未配审批权限的单据
+        一旦发现有异常/未配权限的单据弹窗提示相应的用户(并非所有用户)
+        */
+        //窗口是否已经弹出(true=未关闭,false=已关闭)
+        window.isPoped = false;
+        //调用系统后台查询是否有异常/未配审批权限的单据
+        function getData() {
+            if (!window.isPoped) {
+                $.ajax({
+                    type: "GET",
+                    url: '/financecommon/MessageNotice/GetAbnormalReceiptData',
+                    data: {},
+                    dataType: "json",
+                    success: function (data, textStatus) {
+                        if (data.IsNeedNotify) {
+                            window.isPoped = true;
+                            var pop = new Pop("/bx/Reports/AbnormalReceiptReportSearch", data.Message);
+                        }
+                        return true;
+                    },
+                    error: function (xmlHttpRequest, textStatus, errorThrown) {
+
+                    }
+                });
+            }
+        }
+    </script>
+    <div id="pop" style="display:none;">
+        <div id="popHead">
+            <a id="popClose" title="关闭"></a>
+            <h2>温馨提示</h2>
+        </div>
+        <div id="popContent">
+            <dl id="popIntro">
+                这里是内容
+            </dl>
+            <p id="popMore"><a href="#">去设置 »</a></p>
+        </div>
+    </div>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,323 @@
+.indent-20{
+    text-indent: 20px;
+}
+.indent-90{
+    text-indent: 90px;
+}
+.pdtop-15px{
+    padding-top: 15px!important;
+}
+.pdtop-25px{
+    padding-top: 25px!important;
+}
+.pdbottom-25px{
+    padding-bottom: 25px!important;
+}
+
+
+/*弹窗背景*/
+.bgShade{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    filter: alpha(opacity=60);
+    -moz-opacity: 0.6;
+    opacity: 0.6;
+    z-index: 999;
+}
+
+.popWrap{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    -webkit-box-shadow: 0px 1px 5px rgba(0,0,0,.1);
+    -moz-box-shadow: 0px 1px 5px rgba(0,0,0,.1);
+    box-shadow: 0px 1px 5px rgba(0,0,0,.1);
+    font-size: 12px;
+    color: #333;
+    z-index: 1000;
+}
+.popWrap p{
+    margin: 0!important;
+}
+/*删除附件弹窗和消息提示框*/
+.deletPop,.infoTipPop{
+    width: 295px;
+    height: 182px; 
+    margin-left: -147px;
+    margin-top: -91px;
+}
+.deletPop .popTip,.infoTipPop .popTip{
+    text-align: center;
+    height: 122px;
+    line-height: 122px;
+    font-size: 18px;
+    border-bottom: 1px solid #dcdcdc;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */
+}
+.deletPop .popBtn,.infoTipPop .popBtn{
+    width: 100%;
+    height: 60px;
+}
+.deletPop .popBtn a{
+    display: inline-block;
+    width: 50%;
+    font-size: 16px;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */
+}
+.popBtn .btnNo{
+    border-right: 1px solid #dcdcdc;
+    color: #333;
+}
+.popBtn .btnOk{
+     color: #09bb07;
+}
+
+/*房型详细弹窗*/
+.roomInfoPop{
+    padding: 35px 28px;
+   /* margin-top: -400px;*/
+    margin-left: -350px;
+    top: 5%;
+}
+.roomDetail{
+    border: 1px solid #ddd;
+}
+.roomInfoPop textarea{
+    height: 100px;
+}
+.roomInfoPop .contentWrap{
+    padding: 30px 0;
+}
+.upImg{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 90px;
+    height: 35px;
+    opacity: 0;
+}
+.imgList{
+    width: 457px;
+    height: 77px;
+    overflow: hidden;
+}
+.imgList ul{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 77px;
+}
+.imgList ul li{
+    display: inline-block;
+    float: left;
+    width: 77px;
+    height: 77px;
+    list-style: none;
+    margin-right: 5px;
+    background-color: #eee;
+}
+.imgList a{
+    display: inline-block;
+    z-index: 10;
+   /* width: 21px;
+    height: 77px;*/
+}
+.imgList .btnLeft{
+    top: 0;
+    left: 0;
+}
+.imgList .btnRight{
+    top: 0;
+    right: 0;
+}
+
+/*取消说明弹窗*/
+.cancelPop{
+    padding: 28px 23px;
+    margin-left: -400px;
+    margin-top: -812px;
+}
+
+.cancelPop .decWrap{
+    border: 1px solid #dcdcdc;
+    padding: 21px 25px;
+}
+.cancelPop .decWrap p{
+    height: 25px;
+}
+.cancelPop .addDec{
+    margin-top: 5px;
+}
+.cancelPop .addState{
+    display: inline-block;
+    width: 90px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    border:1px solid #ff7800;
+    color: #ff7800;
+    font-size: 12px;
+    border-radius: 4px;
+}
+.cancelBtnWrap{
+    height: 35px;
+}
+.cancelBtnWrap{
+    padding-left: 240px;
+}
+
+
+
+/*下拉框Select*/
+.MySelectWrap{
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+    /*width: 84px;*/
+  }
+.MySelectWrap .myselect{
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    background-color: #F6F6F6;
+    border: 1px solid #dddddd;
+    font-size: 14px;
+    text-indent: 8px;
+    color: #9A9A9A;
+    line-height:30px; 
+    cursor: pointer;
+}
+.MySelectWrap  .searchicon{
+    display: inline-block;
+    position: absolute;
+    top: 10px!important;
+    right: 10px!important;
+}
+.MySelectWrap  .droplist{
+    display: none;
+    border-top:none;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+  }
+.MySelectWrap  .mySearch,.myoptions{
+    width: 100%;
+    border: 1px solid #dddddd;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */
+  }
+.MySelectWrap  .mySearch{
+  /*  border-bottom: 0;*/
+  }
+  .MySelectWrap .mySearch label{
+    margin: 0;
+  }
+.MySelectWrap  .drop-search{
+    margin:4px 1px 2px 1px;
+    border: 1px solid #1963AA;
+    border-radius: 4px;
+  /*  width: 55px;*/
+    height: 20px;
+    padding: 0  25px 0 0!important;
+  }
+.MySelectWrap  .myoptions{
+   /* height: 124px;*/
+    overflow: auto;
+}
+.MySelectWrap  .myoption{
+    display: block;
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    text-indent: 8px;
+    cursor: pointer;
+}
+.MySelectWrap  .myoption:hover{
+    background: #3385ff;
+    color: #fff;
+}
+.MySelectWrap  .myoption.active{
+    background: #3385ff;
+    color: #fff;
+}
+.MySelectWrap  .optionTriangle{
+    width: 0px;
+    height: 0px;
+    border-top: 5px solid #000;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    float: right;
+    margin: 12px 14px auto auto;
+}
+
+/*儿童年龄弹窗*/
+.MySelectWrap  .ageDropList{
+    width: 119%;
+  /*  display: block;*/
+}
+.MySelectWrap  .ageDropList .myoptions{
+    border: 0;
+}
+.MySelectWrap  .ageDropList .myoptions .myoption{
+    display: inline-block;
+    width: 25px;
+    height: 22px;
+    float: left;
+    border: 1px solid #ddd;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */
+    text-align: center;
+    text-indent: 0;
+}
+#ageSelect{
+    position: absolute;
+    left: 3px;
+    top: 5px;
+}
+
+
+/*图片管理页面放大图片弹窗*/
+.ImgInfoPop{
+    top: 200px!important;
+    left: 400px!important;
+}
+.bgImgTitle{
+    height: 45px;
+    border-bottom: 1px solid #dcdcdc;
+    background-color: #F4F5F9;
+}
+.bgImgTitle .Icon_close{
+    position: absolute;
+    right: 25px;
+    top: 14px;
+}
+.ImgInfoPop .bgImgWrap{
+    padding: 30px;
+}
+.ImgInfoPop .bgImgWrap img{
+    display: inline-block;
+    width: 400px;
+    height: 300px;
+}
+
+
+
+
+

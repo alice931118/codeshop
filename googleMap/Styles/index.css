@@ -1,0 +1,36 @@
+#googleMap{
+	width: 500px;
+	height: 400px;
+	border:1px solid #ddd;
+	background-color: #f5f5f5;
+}
+.mapFlagDIV{
+	position: relative;
+}
+.mapFlagDIV .mapHotelName{
+	display: none;
+	position: absolute;
+	left: -60px;
+	min-width: 120px;
+	padding: 10px;
+	border: 1px solid #ff7800;
+	color: #666;
+	background-color: #f5f5f5;
+	/*text-align: center;*/
+}
+.mapMarkerIcon{
+	display: block;
+	width: 25px;
+	height: 34px;
+	line-height: 28px;
+	background:url("../Images/icon_hotelmap__normal.png");
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+}
+.mapMarkerIcon:hover{
+	background:url("../Images/icon_hotelmap__hover.png");
+}
+
