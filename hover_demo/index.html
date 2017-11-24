@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<link rel="stylesheet" type="text/css" href="css/CustomControl.css">
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+	<style type="text/css">
+	.ImageIcon {
+	    background: url(images/img.png) no-repeat;
+	}
+	.tc_b
+	{
+	    height: 18px;
+	    width: 22px;
+	    background-position: 0 -1601px;
+	}
+</style>
+</head>
+<body>
+	<span class="haveFacility" pfacilitiesandserviceshover="<p><span>网络信息：</span>住宿方于公共场所提供WiFi（免费）。 </p>">
+		<em style="border-bottom: 1px dashed #50b400;color:#50b400">无免费WIFI</em>
+	</span>
+
+	<script type="text/javascript">
+		$(".haveFacility, #portTip").hover(function () {
+		    var _html = "<div class='portTip'>该酒店提供接送机服务（可能会收费），预订成功后，您可以将相关信息提供给酒店，以便您的需求能够及时受理。</div>";
+		    $(this).ShowTip({
+		        id: "portTip",
+		        html: _html,
+		        JianTouLeft: 0, //箭头偏移亮
+		        offsetX: 0, //往左偏移量
+		        TipIsCenter: true,
+                isInTag: true
+		    });
+		}, function () {
+		    $("#portTip").RemoveTip();
+		});
+
+	</script>
+</body>
+</html>
