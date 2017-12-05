@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
+
+    <script src="jquery.js"></script>
+    <script src="jquery-let_it_snow.js"></script>
+</head>
+<body style="background:#000;">
+<!-- <img id="lis_flake" src="snow.png"> -->
+<canvas width="1309" height="973" class="snow"></canvas>
+
+	<script type="text/javascript">
+		$("canvas.snow").let_it_snow({
+              windPower: 0,
+              speed: 1
+            }); 
+	</script>
+</body>
+</html>
